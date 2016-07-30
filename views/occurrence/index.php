@@ -2,13 +2,9 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use app\models\Occurrence;
 
-/* @var $this yii\web\View */
-/* @var $searchModel app\models\OccurrenceSearch */
-/* @var $dataProvider yii\data\ActiveDataProvider */
-
-$this->title = 'Occurrences';
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Ocorrências';
 ?>
 <div class="occurrence-index">
 
@@ -22,13 +18,45 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
-            'type_id',
-            'return_by',
+            [
+              'attribute' => 'id',
+              'enableSorting' => true,
+              'contentOptions'=>['style'=>'width: 4%;text-align:center'],
+            ], 
+            [
+              'attribute' => 'created',
+              'enableSorting' => true,
+              'contentOptions'=>['style'=>'width: 5%;text-align:center'],
+              'format' => ['date', 'php:d/m/Y'],
+            ],             
+            [
+              'attribute' => 'type_id',
+              'enableSorting' => true,
+              'value' => function($data) {
+                  return $data->getType(); // OR use magic property $data->requestedMounthValue;
+              },
+              'filter' => Occurrence::$Static_type,
+              'contentOptions'=>['style'=>'width: 10%;text-align:center'],
+            ],             
+            [
+              'attribute' => 'return_by',
+              'enableSorting' => true,
+              'value' => function($data) {
+                  return $data->getReturn();
+              },
+              'filter' => Occurrence::$Static_return,
+              'contentOptions'=>['style'=>'width: 10%;text-align:center'],
+            ],             
             'subject',
-            'message:ntext',
+            [
+              'attribute' => 'status_id',
+              'enableSorting' => true,
+              'value' => function($data) {
+                  return $data->getStatus();
+              },
+              'filter' => Occurrence::$Static_status,
+              'contentOptions'=>['style'=>'width: 10%;text-align:center'],
+            ], 
             // 'status_id',
             // 'created',
             // 'updated',

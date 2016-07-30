@@ -4,33 +4,57 @@ namespace app\models;
 
 use Yii;
 
-/**
- * This is the model class for table "occurrence".
- *
- * @property integer $id
- * @property integer $type_id
- * @property integer $return_by
- * @property string $subject
- * @property string $message
- * @property integer $status_id
- * @property string $created
- * @property string $updated
- * @property integer $user_id
- * @property integer $updated_by
- */
 class Occurrence extends \yii\db\ActiveRecord
 {
-    /**
-     * @inheritdoc
-     */
     public static function tableName()
     {
         return 'occurrence';
     }
 
-    /**
-     * @inheritdoc
-     */
+    public static $Static_type = [
+        'DÚVIDA',
+        'ELOGIO',
+        'RECLAMAÇÃO',
+        'SUGESTÃO',
+        'OUTROS',
+    ];  
+
+    public function getType()
+    {
+        if ($this->type === null) {
+            return null;
+        }
+        return self::$Static_type[$this->type];
+    }    
+
+    public static $Static_return = [
+        'CARTA',
+        'CONSULTA PELA INTERNET',
+        'E-MAIL',
+    ];  
+
+    public function getReturn()
+    {
+        if ($this->return === null) {
+            return null;
+        }
+        return self::$Static_return[$this->return];
+    } 
+
+    public static $Static_status = [
+        'PENDENTE',
+        'EM ANÁLISE',
+        'FINALIZADO',
+    ];  
+
+    public function getStatus()
+    {
+        if ($this->status === null) {
+            return null;
+        }
+        return self::$Static_status[$this->status];
+    }    
+
     public function rules()
     {
         return [
@@ -42,9 +66,6 @@ class Occurrence extends \yii\db\ActiveRecord
         ];
     }
 
-    /**
-     * @inheritdoc
-     */
     public function attributeLabels()
     {
         return [

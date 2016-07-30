@@ -16,7 +16,7 @@ $this->title = 'Sicoob Crediriodoce - Cana de Ética';
     </p>
 
     <p>
-    <?= Html::a('<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Registrar Mensagem', ['/user/register'], ['class'=>'btn btn-success']) ?>
+    <?= Html::a('<span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Registrar Mensagem', ['/user/register'], ['class'=>'btn btn-success']) ?>
     <?= Html::a('<span class="glyphicon glyphicon-search" aria-hidden="true"></span> Consultar Mensagem', ['/user/login'], ['class'=>'btn btn-success']) ?>
     </p>
 
