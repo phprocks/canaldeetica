@@ -6,26 +6,28 @@ $config = [
     'id' => 'canaldeetica',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+    'language' => 'pt-BR',
+    'sourceLanguage' => 'en-US',      
     'components' => [
         'request' => [
-            'cookieValidationKey' => 'HOSkpcS0ihF5LSodrr3HNb1AaqZd32Pv',
+            'cookieValidationKey' => 'canaldeeticaHOSkpcS0ihF5LSodrr3HNb1AaqZd32Pv',
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
         'user' => [
-            'identityClass' => 'app\models\User',
-            'enableAutoLogin' => true,
+            'class' => 'amnah\yii2\user\components\User',
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
-            // send all mails to a file by default. You have to set
-            // 'useFileTransport' to false and configure a transport
-            // for the mailer to send real emails.
             'useFileTransport' => true,
+            'messageConfig' => [
+                'from' => ['admin@website.com' => 'Admin'], // this is needed for sending emails
+                'charset' => 'UTF-8',
+            ]
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -46,6 +48,12 @@ $config = [
         ],
         */
     ],
+    'modules' => [
+        'user' => [
+            'class' => 'amnah\yii2\user\Module',
+            // set custom module properties here ...
+        ],
+    ],    
     'params' => $params,
 ];
 
