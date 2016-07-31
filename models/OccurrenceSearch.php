@@ -12,7 +12,7 @@ class OccurrenceSearch extends Occurrence
     public function rules()
     {
         return [
-            [['id', 'type_id', 'return_by', 'status_id', 'user_id', 'updated_by'], 'integer'],
+            [['id', 'type', 'returntype', 'status', 'user_id', 'updated_by'], 'integer'],
             [['subject', 'message', 'created', 'updated'], 'safe'],
         ];
     }
@@ -44,9 +44,9 @@ class OccurrenceSearch extends Occurrence
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'type_id' => $this->type_id,
-            'return_by' => $this->return_by,
-            'status_id' => $this->status_id,
+            'type' => $this->type,
+            'returntype' => $this->returntype,
+            'status' => $this->status,
             'created' => $this->created,
             'updated' => $this->updated,
             'user_id' => $this->user_id,

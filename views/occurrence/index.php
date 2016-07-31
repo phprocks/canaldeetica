@@ -9,7 +9,7 @@ $this->title = 'Ocorrências';
 <div class="occurrence-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-    <?php echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php //echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
         <?php //Html::a('Create Occurrence', ['create'], ['class' => 'btn btn-success']) ?>
@@ -30,7 +30,7 @@ $this->title = 'Ocorrências';
               'format' => ['date', 'php:d/m/Y'],
             ],             
             [
-              'attribute' => 'type_id',
+              'attribute' => 'type',
               'enableSorting' => true,
               'value' => function($data) {
                   return $data->getType(); // OR use magic property $data->requestedMounthValue;
@@ -39,12 +39,12 @@ $this->title = 'Ocorrências';
               'contentOptions'=>['style'=>'width: 10%;text-align:center'],
             ],             
             [
-              'attribute' => 'return_by',
+              'attribute' => 'returntype',
               'enableSorting' => true,
               'value' => function($data) {
-                  return $data->getReturn();
+                  return $data->getReturntype();
               },
-              'filter' => Occurrence::$Static_return,
+              'filter' => Occurrence::$Static_returntype,
               'contentOptions'=>['style'=>'width: 10%;text-align:center'],
             ],             
             'subject',

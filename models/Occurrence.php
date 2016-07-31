@@ -27,18 +27,18 @@ class Occurrence extends \yii\db\ActiveRecord
         return self::$Static_type[$this->type];
     }    
 
-    public static $Static_return = [
+    public static $Static_returntype = [
         'CARTA',
         'CONSULTA PELA INTERNET',
-        'E-MAIL',
+        'EMAIL',
     ];  
 
-    public function getReturn()
+    public function getReturntype()
     {
-        if ($this->return === null) {
+        if ($this->returntype === null) {
             return null;
         }
-        return self::$Static_return[$this->return];
+        return self::$Static_returntype[$this->returntype];
     } 
 
     public static $Static_status = [
@@ -58,8 +58,8 @@ class Occurrence extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['type_id', 'return_by', 'subject', 'message', 'status_id', 'created', 'updated', 'user_id', 'updated_by'], 'required'],
-            [['type_id', 'return_by', 'status_id', 'user_id', 'updated_by'], 'integer'],
+            [['type', 'returntype', 'subject', 'message', 'status', 'created', 'user_id'], 'required'],
+            [['type', 'returntype', 'status', 'user_id', 'updated_by'], 'integer'],
             [['message'], 'string'],
             [['created', 'updated'], 'safe'],
             [['subject'], 'string', 'max' => 50],
@@ -70,15 +70,20 @@ class Occurrence extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'type_id' => 'Tipo',
-            'return_by' => 'Retorno por',
+            'type' => 'Tipo',
+            'returntype' => 'Retorno por',
             'subject' => 'Assunto',
             'message' => 'Mensagem',
-            'status_id' => 'Situação',
+            'status' => 'Situação',
             'created' => 'Data',
             'updated' => 'Alteração',
             'user_id' => 'User',
             'updated_by' => 'Updated By',
         ];
     }
+
+    public function getUser()
+    {
+        return $this->hasOne(User::className(), ['id' => 'user_id']);
+    }    
 }

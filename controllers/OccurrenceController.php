@@ -57,6 +57,10 @@ class OccurrenceController extends Controller
     {
         $model = new Occurrence();
 
+        $model->status_id = 1;
+        $model->created = date('Y-m-d');
+        $model->user_id = Yii::$app->user->id; 
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
