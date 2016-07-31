@@ -8,31 +8,33 @@ use app\models\OccurrenceSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
+use yii\base\Security;
 
-/**
- * OccurrenceController implements the CRUD actions for Occurrence model.
- */
 class OccurrenceController extends Controller
 {
-    /**
-     * @inheritdoc
-     */
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::classname(),
+                'only'  => ['index','create','view','update'],
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@']
+                    ],
+                ]
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'delete' => ['POST'],
+                    'delete' => ['post'],
                 ],
             ],
         ];
     }
 
-    /**
-     * Lists all Occurrence models.
-     * @return mixed
-     */
     public function actionIndex()
     {
         $searchModel = new OccurrenceSearch();
@@ -44,11 +46,6 @@ class OccurrenceController extends Controller
         ]);
     }
 
-    /**
-     * Displays a single Occurrence model.
-     * @param integer $id
-     * @return mixed
-     */
     public function actionView($id)
     {
         return $this->render('view', [
@@ -56,11 +53,6 @@ class OccurrenceController extends Controller
         ]);
     }
 
-    /**
-     * Creates a new Occurrence model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
-     */
     public function actionCreate()
     {
         $model = new Occurrence();
@@ -74,12 +66,6 @@ class OccurrenceController extends Controller
         }
     }
 
-    /**
-     * Updates an existing Occurrence model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
-     * @return mixed
-     */
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
@@ -93,12 +79,6 @@ class OccurrenceController extends Controller
         }
     }
 
-    /**
-     * Deletes an existing Occurrence model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
-     * @return mixed
-     */
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
@@ -106,13 +86,6 @@ class OccurrenceController extends Controller
         return $this->redirect(['index']);
     }
 
-    /**
-     * Finds the Occurrence model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
-     * @return Occurrence the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
-     */
     protected function findModel($id)
     {
         if (($model = Occurrence::findOne($id)) !== null) {

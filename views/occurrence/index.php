@@ -9,10 +9,10 @@ $this->title = 'Ocorrências';
 <div class="occurrence-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Occurrence', ['create'], ['class' => 'btn btn-success']) ?>
+        <?php //Html::a('Create Occurrence', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
