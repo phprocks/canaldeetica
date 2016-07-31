@@ -19,9 +19,9 @@ $this->title = 'Ocorrências';
         'filterModel' => $searchModel,
         'columns' => [
             [
-              'attribute' => 'id',
+              'attribute' => 'protocol',
               'enableSorting' => true,
-              'contentOptions'=>['style'=>'width: 4%;text-align:center'],
+              'contentOptions'=>['style'=>'width: 5%;text-align:center'],
             ], 
             [
               'attribute' => 'created',
