@@ -23,6 +23,11 @@ $this->title = 'Minhas Mensagens';
         //'filterModel' => $searchModel,
         'columns' => [
             [
+              'attribute' => 'protocol',
+              'enableSorting' => true,
+              'contentOptions'=>['style'=>'width: 8%;text-align:center'],
+            ],         
+            [
               'attribute' => 'created',
               'enableSorting' => true,
               'contentOptions'=>['style'=>'width: 5%;text-align:center'],

@@ -4,15 +4,15 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 
-$this->title = "Ocorrencia #" . $model->id;
+$this->title = "Mensagem - Protocolo #" . $model->protocol;
 ?>
 <div class="occurrence-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
-
+    <hr/>
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
+        <?= Html::a('Alterar', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Excluir', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
@@ -24,17 +24,43 @@ $this->title = "Ocorrencia #" . $model->id;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
-            'type',
-            'returntype',
+            [ 
+                'attribute' => 'type',  
+                'format' => 'raw',
+                'value' => $model->Type,
+            ],
+            [ 
+                'attribute' => 'returntype',  
+                'format' => 'raw',
+                'value' => $model->Returntype,
+            ],            
             'subject',
             'message:ntext',
-            'status',
-            'created',
-            'updated',
+            [ 
+                'attribute' => 'created',
+                'format' => 'raw',
+                'value' => date("d/m/Y",  strtotime($model->created))
+            ],  
             'user_id',
-            'updated_by',
         ],
     ]) ?>
+
+    <?= DetailView::widget([
+        'model' => $model,
+        'attributes' => [
+            [ 
+                'attribute' => 'status',  
+                'format' => 'raw',
+                'value' => $model->Status,
+            ],  
+            'answer:ntext',
+            [ 
+                'attribute' => 'updated',
+                'format' => 'raw',
+                'value' => date("d/m/Y",  strtotime($model->updated))
+            ], 
+            'updated_by',
+        ],
+    ]) ?>    
 
 </div>

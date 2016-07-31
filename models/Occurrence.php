@@ -58,9 +58,9 @@ class Occurrence extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['type', 'returntype', 'subject', 'message', 'status', 'created', 'user_id'], 'required'],
-            [['type', 'returntype', 'status', 'user_id', 'updated_by'], 'integer'],
-            [['message'], 'string'],
+            [['protocol', 'type', 'returntype', 'subject', 'message', 'status', 'created', 'user_id'], 'required'],
+            [['protocol', 'type', 'returntype', 'status', 'user_id', 'updated_by'], 'integer'],
+            [['message','answer'], 'string'],
             [['created', 'updated'], 'safe'],
             [['subject'], 'string', 'max' => 50],
         ];
@@ -70,6 +70,7 @@ class Occurrence extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
+            'protocol' => 'Protocolo',
             'type' => 'Tipo',
             'returntype' => 'Retorno por',
             'subject' => 'Assunto',
@@ -79,6 +80,7 @@ class Occurrence extends \yii\db\ActiveRecord
             'updated' => 'Alteração',
             'user_id' => 'User',
             'updated_by' => 'Updated By',
+            'answer' => 'Resposta',
         ];
     }
 

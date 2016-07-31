@@ -72,6 +72,7 @@ class OccurrenceController extends Controller
         $model->status = 0;
         $model->created = date('Y-m-d');
         $model->user_id = Yii::$app->user->id; 
+        $model->protocol = date('Y').mt_rand(1500, 8500);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['mylist']);
@@ -85,6 +86,9 @@ class OccurrenceController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+
+        $model->updated = date('Y-m-d');
+        $model->updated_by = Yii::$app->user->id; 
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
