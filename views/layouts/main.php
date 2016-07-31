@@ -40,7 +40,7 @@ AppAsset::register($this);
             //['label' => 'About', 'url' => ['/site/about']],
             //['label' => 'Contact', 'url' => ['/site/contact']],
             //['label' => 'User', 'url' => ['/user']],
-            ['label' => 'Ocorrências', 'url' => ['/occurrence'],'visible' => !Yii::$app->user->isGuest],
+            ['label' => 'Ocorrências', 'url' => ['/occurrence'],'visible' => Yii::$app->user->can("admin")],
             Yii::$app->user->isGuest ?
                 ['label' => 'Restrito', 'url' => ['/user/login']] : // or ['/user/login-email']
                 ['label' => 'Sair (' . Yii::$app->user->displayName . ')',

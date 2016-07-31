@@ -3,12 +3,8 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
-/* @var $this yii\web\View */
-/* @var $model app\models\Occurrence */
 
-$this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Occurrences', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = "Ocorrencia #" . $model->id;
 ?>
 <div class="occurrence-view">
 
@@ -29,11 +25,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'type_id',
-            'return_by',
+            'type',
+            'returntype',
             'subject',
             'message:ntext',
-            'status_id',
+            'status',
             'created',
             'updated',
             'user_id',

@@ -10,9 +10,9 @@ use app\models\Occurrence;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'type_id')->dropDownList(Occurrence::$Static_type,['prompt'=>'--']) ?>
+    <?= $form->field($model, 'type')->dropDownList(Occurrence::$Static_type,['prompt'=>'--']) ?>
 
-    <?= $form->field($model, 'return_by')->dropDownList(Occurrence::$Static_return,['prompt'=>'--']) ?>
+    <?= $form->field($model, 'returntype')->dropDownList(Occurrence::$Static_returntype,['prompt'=>'--']) ?>
 
     <?= $form->field($model, 'subject')->textInput(['maxlength' => true]) ?>
 
@@ -20,7 +20,7 @@ use app\models\Occurrence;
 
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? 'Enviar' : 'Enviar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

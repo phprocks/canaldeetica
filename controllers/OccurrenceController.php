@@ -18,7 +18,7 @@ class OccurrenceController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::classname(),
-                'only'  => ['index','create','view','update'],
+                'only'  => ['index','create','view','update','mylist'],
                 'rules' => [
                     [
                         'allow' => true,
@@ -46,6 +46,18 @@ class OccurrenceController extends Controller
         ]);
     }
 
+    public function actionMylist()
+    {
+        $searchModel = new OccurrenceSearch();
+        $searchModel->user_id = Yii::$app->user->id;
+        $dataProvider = $searchModel->mylist(Yii::$app->request->queryParams);
+
+        return $this->render('mylist', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }    
+
     public function actionView($id)
     {
         return $this->render('view', [
@@ -57,12 +69,12 @@ class OccurrenceController extends Controller
     {
         $model = new Occurrence();
 
-        $model->status_id = 1;
+        $model->status = 0;
         $model->created = date('Y-m-d');
         $model->user_id = Yii::$app->user->id; 
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['mylist']);
         } else {
             return $this->render('create', [
                 'model' => $model,

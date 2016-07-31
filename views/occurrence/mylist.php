@@ -4,25 +4,24 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use app\models\Occurrence;
 
-$this->title = 'Ocorrências';
+$this->title = 'Minhas Mensagens';
 ?>
 <div class="occurrence-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-    <?php //echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <p>
-        <?php //Html::a('Create Occurrence', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+    <?php foreach (Yii::$app->session->getAllFlashes() as $key=>$message):?>
+        <?php $alertClass = substr($key,strpos($key,'-')+1); ?>
+        <div class="alert alert-dismissible alert-<?=$alertClass?>" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <p><?=$message?></p>
+        </div>
+    <?php endforeach ?>
+
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
+        //'filterModel' => $searchModel,
         'columns' => [
-            [
-              'attribute' => 'id',
-              'enableSorting' => true,
-              'contentOptions'=>['style'=>'width: 4%;text-align:center'],
-            ], 
             [
               'attribute' => 'created',
               'enableSorting' => true,
@@ -57,13 +56,6 @@ $this->title = 'Ocorrências';
               'filter' => Occurrence::$Static_status,
               'contentOptions'=>['style'=>'width: 10%;text-align:center'],
             ], 
-            // 'status_id',
-            // 'created',
-            // 'updated',
-            // 'user_id',
-            // 'updated_by',
-
-            ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
 </div>

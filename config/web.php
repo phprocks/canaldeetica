@@ -59,6 +59,9 @@ $config = [
         'user' => [
             'class' => 'amnah\yii2\user\Module',
             // set custom module properties here ...
+            'controllerMap' => [
+                'default' => 'app\controllers\DefaultController',
+            ],           
         ],
     ],    
     'params' => $params,
