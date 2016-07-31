@@ -78,8 +78,8 @@ class Occurrence extends \yii\db\ActiveRecord
             'status' => 'Situação',
             'created' => 'Data',
             'updated' => 'Alteração',
-            'user_id' => 'User',
-            'updated_by' => 'Updated By',
+            'user_id' => 'Visitante',
+            'updated_by' => 'Alterado por',
             'answer' => 'Resposta',
         ];
     }

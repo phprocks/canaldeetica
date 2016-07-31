@@ -21,46 +21,62 @@ $this->title = "Mensagem - Protocolo #" . $model->protocol;
         ]) ?>
     </p>
 
-    <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            [ 
-                'attribute' => 'type',  
-                'format' => 'raw',
-                'value' => $model->Type,
+    <div class="panel panel-default">
+      <div class="panel-heading"><h5>Mensagem</h5></div>
+      <div class="panel-body">
+        <?= DetailView::widget([
+            'model' => $model,
+            'attributes' => [
+                [ 
+                    'attribute' => 'type',  
+                    'format' => 'raw',
+                    'value' => $model->Type,
+                ],
+                [ 
+                    'attribute' => 'returntype',  
+                    'format' => 'raw',
+                    'value' => $model->Returntype,
+                ],            
+                'subject',
+                'message:ntext',
+                [ 
+                    'attribute' => 'created',
+                    'format' => 'raw',
+                    'value' => date("d/m/Y",  strtotime($model->created))
+                ],  
+                'user_id',
             ],
-            [ 
-                'attribute' => 'returntype',  
-                'format' => 'raw',
-                'value' => $model->Returntype,
-            ],            
-            'subject',
-            'message:ntext',
-            [ 
-                'attribute' => 'created',
-                'format' => 'raw',
-                'value' => date("d/m/Y",  strtotime($model->created))
-            ],  
-            'user_id',
-        ],
-    ]) ?>
+        ]) ?>
+      </div>
+    </div>    
 
-    <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            [ 
-                'attribute' => 'status',  
-                'format' => 'raw',
-                'value' => $model->Status,
-            ],  
-            'answer:ntext',
-            [ 
-                'attribute' => 'updated',
-                'format' => 'raw',
-                'value' => date("d/m/Y",  strtotime($model->updated))
-            ], 
-            'updated_by',
-        ],
-    ]) ?>    
+    <div class="row container-fluid">
+    <div class="panel panel-default">
+      <div class="panel-heading"><h5>Retorno</h5></div>
+      <div class="panel-body">
+        <?= DetailView::widget([
+            'model' => $model,
+            'attributes' => [
+                [ 
+                    'attribute' => 'status',  
+                    'format' => 'raw',
+                    'value' => $model->Status,
+                ],  
+                [ 
+                    'attribute' => 'answer',  
+                    'format' => 'html',
+                    'value' => $model->answer,
+                ],                 
+                [ 
+                    'attribute' => 'updated',
+                    'format' => 'raw',
+                    'value' => date("d/m/Y",  strtotime($model->updated))
+                ], 
+                'updated_by',
+            ],
+        ]) ?>  
+      </div>
+    </div>
+    </div>
 
 </div>
