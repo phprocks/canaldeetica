@@ -15,7 +15,7 @@ $this->title = "Mensagem - Protocolo #" . $model->protocol;
         <?= Html::a('Excluir', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => 'Deseja realmente excluir?',
                 'method' => 'post',
             ],
         ]) ?>

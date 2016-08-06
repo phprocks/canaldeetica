@@ -2,11 +2,12 @@
 
 use yii\helpers\Html;
 
-$this->title = 'Envie sua Mensagem';
+$this->title = 'Registre sua Mensagem';
 ?>
 <div class="occurrence-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
+    <hr/>
 
     <?php foreach (Yii::$app->session->getAllFlashes() as $key=>$message):?>
         <?php $alertClass = substr($key,strpos($key,'-')+1); ?>

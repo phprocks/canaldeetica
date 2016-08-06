@@ -28,7 +28,7 @@ class Occurrence extends \yii\db\ActiveRecord
     }    
 
     public static $Static_returntype = [
-        'CARTA',
+        'TELEFONE',
         'CONSULTA PELA INTERNET',
         'EMAIL',
     ];  
@@ -40,6 +40,21 @@ class Occurrence extends \yii\db\ActiveRecord
         }
         return self::$Static_returntype[$this->returntype];
     } 
+
+    public static $Static_employee = [
+        'NÃO INFORMAR',
+        'SIM',
+        'NÃO',
+        'NÃO, SOU CLIENTE',
+    ];  
+
+    public function getEmployee()
+    {
+        if ($this->is_employee === null) {
+            return null;
+        }
+        return self::$Static_Employee[$this->is_employee];
+    }      
 
     public static $Static_status = [
         'PENDENTE',
@@ -58,9 +73,9 @@ class Occurrence extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['protocol', 'type', 'returntype', 'subject', 'message', 'status', 'created', 'user_id'], 'required'],
-            [['protocol', 'type', 'returntype', 'status', 'user_id', 'updated_by'], 'integer'],
-            [['message','answer'], 'string'],
+            [['protocol', 'type', 'returntype', 'subject', 'message', 'status', 'created'], 'required'],
+            [['protocol', 'type', 'returntype', 'is_employee', 'status', 'updated_by'], 'integer'],
+            [['message','answer', 'reporter_name', 'reporter_email', 'reporter_phone', 'reporter_celphone'], 'string'],
             [['created', 'updated'], 'safe'],
             [['subject'], 'string', 'max' => 50],
         ];
@@ -71,8 +86,9 @@ class Occurrence extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'protocol' => 'Protocolo',
-            'type' => 'Tipo',
+            'type' => 'Tipo da Mensagem',
             'returntype' => 'Retorno por',
+            'is_employee' => 'É funcionário?',
             'subject' => 'Assunto',
             'message' => 'Mensagem',
             'status' => 'Situação',
@@ -81,6 +97,10 @@ class Occurrence extends \yii\db\ActiveRecord
             'user_id' => 'Visitante',
             'updated_by' => 'Alterado por',
             'answer' => 'Resposta',
+            'reporter_name' => 'Nome',
+            'reporter_email' => 'E-mail',
+            'reporter_phone' => 'Telefone',
+            'reporter_celphone' => 'Celular',
         ];
     }
 

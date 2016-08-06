@@ -18,7 +18,7 @@ class OccurrenceController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::classname(),
-                'only'  => ['index','create','view','update','mylist'],
+                'only'  => ['index','update','mylist'],
                 'rules' => [
                     [
                         'allow' => true,
@@ -44,19 +44,7 @@ class OccurrenceController extends Controller
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
-    }
-
-    public function actionMylist()
-    {
-        $searchModel = new OccurrenceSearch();
-        $searchModel->user_id = Yii::$app->user->id;
-        $dataProvider = $searchModel->mylist(Yii::$app->request->queryParams);
-
-        return $this->render('mylist', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
-    }    
+    }   
 
     public function actionView($id)
     {
@@ -65,17 +53,23 @@ class OccurrenceController extends Controller
         ]);
     }
 
+    public function actionProtocol($id)
+    {
+        return $this->render('protocol', [
+            'model' => $this->findModel($id),
+        ]);
+    }    
+
     public function actionCreate()
     {
         $model = new Occurrence();
 
         $model->status = 0;
         $model->created = date('Y-m-d');
-        $model->user_id = Yii::$app->user->id; 
         $model->protocol = date('Y').mt_rand(1500, 8500);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['mylist']);
+            return $this->redirect(['protocol', 'id' => $model->id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
