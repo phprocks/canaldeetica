@@ -4,22 +4,19 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 
-$this->title = "Mensagem - Protocolo #" . $model->protocol;
+$this->title = "";
 ?>
 <div class="occurrence-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <hr/>
 
-    <div class="panel panel-default">
-      <div class="panel-heading"><h5>Mensagem</h5></div>
-      <div class="panel-body">
-        <?= DetailView::widget([
-            'model' => $model,
-            'attributes' => [
-                'protocol',
-            ],
-        ]) ?>
-      </div>
-    </div>    
+    <?php foreach (Yii::$app->session->getAllFlashes() as $key=>$message):?>
+        <?php $alertClass = substr($key,strpos($key,'-')+1); ?>
+        <div class="alert alert-dismissible alert-<?=$alertClass?>" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <p><?=$message?></p>
+        </div>
+    <?php endforeach ?>
+
 </div>

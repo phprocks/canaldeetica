@@ -94,7 +94,6 @@ class Occurrence extends \yii\db\ActiveRecord
             'status' => 'Situação',
             'created' => 'Data',
             'updated' => 'Alteração',
-            'user_id' => 'Visitante',
             'updated_by' => 'Alterado por',
             'answer' => 'Resposta',
             'reporter_name' => 'Nome',
@@ -102,10 +101,5 @@ class Occurrence extends \yii\db\ActiveRecord
             'reporter_phone' => 'Telefone',
             'reporter_celphone' => 'Celular',
         ];
-    }
-
-    public function getUser()
-    {
-        return $this->hasOne(User::className(), ['id' => 'user_id']);
-    }    
+    }  
 }

@@ -12,7 +12,7 @@ class OccurrenceSearch extends Occurrence
     public function rules()
     {
         return [
-            [['id', 'protocol', 'type', 'returntype', 'status', 'user_id', 'updated_by'], 'integer'],
+            [['id', 'protocol', 'type', 'returntype', 'status', 'updated_by'], 'integer'],
             [['subject', 'message', 'created', 'updated','answer'], 'safe'],
         ];
     }
@@ -50,7 +50,6 @@ class OccurrenceSearch extends Occurrence
             'status' => $this->status,
             'created' => $this->created,
             'updated' => $this->updated,
-            'user_id' => $this->user_id,
             'updated_by' => $this->updated_by,
         ]);
 
@@ -60,11 +59,9 @@ class OccurrenceSearch extends Occurrence
         return $dataProvider;
     }
 
-    public function mylist($params)
+    public function searchprotocol($params)
     {
         $query = Occurrence::find();
-
-        // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -73,25 +70,12 @@ class OccurrenceSearch extends Occurrence
         $this->load($params);
 
         if (!$this->validate()) {
-            // uncomment the following line if you do not want to return any records when validation fails
-            // $query->where('0=1');
             return $dataProvider;
         }
 
-        // grid filtering conditions
         $query->andFilterWhere([
-            'id' => $this->id,
-            'type' => $this->type,
-            'returntype' => $this->returntype,
-            'status' => $this->status,
-            'created' => $this->created,
-            'updated' => $this->updated,
-            'user_id' => $this->user_id,
-            'updated_by' => $this->updated_by,
+            'protocol' => $this->protocol,
         ]);
-
-        $query->andFilterWhere(['like', 'subject', $this->subject])
-            ->andFilterWhere(['like', 'message', $this->message]);
 
         return $dataProvider;
     }    

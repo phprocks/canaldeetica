@@ -18,7 +18,7 @@ class OccurrenceController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::classname(),
-                'only'  => ['index','update','mylist'],
+                'only'  => ['index','update'],
                 'rules' => [
                     [
                         'allow' => true,
@@ -34,6 +34,17 @@ class OccurrenceController extends Controller
             ],
         ];
     }
+
+    public function actionSearch()
+    {
+        $searchModel = new OccurrenceSearch();
+        $dataProvider = $searchModel->searchprotocol(Yii::$app->request->queryParams);
+
+        return $this->render('search', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }       
 
     public function actionIndex()
     {
@@ -53,11 +64,9 @@ class OccurrenceController extends Controller
         ]);
     }
 
-    public function actionProtocol($id)
+    public function actionProtocol($protocol)
     {
-        return $this->render('protocol', [
-            'model' => $this->findModel($id),
-        ]);
+        return $this->render('protocol');
     }    
 
     public function actionCreate()
@@ -69,7 +78,8 @@ class OccurrenceController extends Controller
         $model->protocol = date('Y').mt_rand(1500, 8500);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['protocol', 'id' => $model->id]);
+            Yii::$app->session->setFlash('protocol-success', 'Mensagem gravada com sucesso!</br>Anote o numero do protocolo para consultar o andamento da ocorrencia: #'.$model->protocol);
+            return $this->redirect(['protocol', 'protocol' => $model->protocol]);
         } else {
             return $this->render('create', [
                 'model' => $model,
