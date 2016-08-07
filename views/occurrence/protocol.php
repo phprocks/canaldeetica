@@ -19,4 +19,11 @@ $this->title = "";
         </div>
     <?php endforeach ?>
 
+	<?= DetailView::widget([
+            'model' => $model,
+            'attributes' => [           
+                'subject',
+            ],
+        ]) ?>    
+
 </div>

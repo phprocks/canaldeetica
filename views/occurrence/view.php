@@ -44,7 +44,6 @@ $this->title = "Mensagem - Protocolo #" . $model->protocol;
                     'format' => 'raw',
                     'value' => date("d/m/Y",  strtotime($model->created))
                 ],  
-                'user_id',
             ],
         ]) ?>
       </div>

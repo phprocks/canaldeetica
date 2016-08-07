@@ -40,11 +40,26 @@ class OccurrenceController extends Controller
         $searchModel = new OccurrenceSearch();
         $dataProvider = $searchModel->searchprotocol(Yii::$app->request->queryParams);
 
+        //$searchModel->protocol = '0';
+
         return $this->render('search', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
-    }       
+    }   
+
+    // public function actionSearch()
+    // {
+    //     $searchModel = new OccurrenceSearch();
+    //     $dataProvider = $searchModel->searchprotocol(Yii::$app->request->queryParams);
+    //     $model = $dataProvider->query->one();
+
+    //     return $this->render('search', [
+    //         'searchModel' => $searchModel,
+    //         //'dataProvider' => $dataProvider,
+    //         'model' => $model,
+    //     ]);
+    // }        
 
     public function actionIndex()
     {

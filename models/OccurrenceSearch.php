@@ -13,6 +13,7 @@ class OccurrenceSearch extends Occurrence
     {
         return [
             [['id', 'protocol', 'type', 'returntype', 'status', 'updated_by'], 'integer'],
+            [['protocol'], 'required'],
             [['subject', 'message', 'created', 'updated','answer'], 'safe'],
         ];
     }
@@ -69,11 +70,14 @@ class OccurrenceSearch extends Occurrence
 
         $this->load($params);
 
-        if (!$this->validate()) {
+        // if (!$this->validate()) {
+        //     return $dataProvider;
+        // }
+        if (isset($_GET['protocol']) && !($this->load($params) && $this->validate())) {
             return $dataProvider;
-        }
+        }        
 
-        $query->andFilterWhere([
+        $query->andWhere([
             'protocol' => $this->protocol,
         ]);
 
