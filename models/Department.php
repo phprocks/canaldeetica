@@ -29,7 +29,7 @@ class Department extends \yii\db\ActiveRecord
 
     public static $Static_returntype = [
         'TELEFONE',
-        'CONSULTA PELA INTERNET',
+        'CONSULTA SITE',
         'EMAIL',
     ];  
 

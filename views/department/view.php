@@ -100,7 +100,11 @@ $this->title = "Mensagem - Protocolo #" . $model->protocol;
                 ],            
                 'answer',
                 'updated_by',
-                'updated',
+                [ 
+                    'attribute' => 'reporter_celphone',
+                    'format' => 'raw',
+                    'value' => $model->updated <> '' ? date("d/m/Y",  strtotime($model->updated)) : '<span class="not-set">(não alterado)</span>',
+                ],                 
             ],
         ]) ?>  
       </div>

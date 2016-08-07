@@ -8,16 +8,28 @@ use app\models\DepartmentSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
+use yii\base\Security;
 
 class DepartmentController extends Controller
 {
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::classname(),
+                'only'  => ['index','update','create','delete'],
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@']
+                    ],
+                ]
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'delete' => ['POST'],
+                    'delete' => ['post'],
                 ],
             ],
         ];
@@ -57,6 +69,9 @@ class DepartmentController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+
+        $model->updated = date('Y-m-d');
+        $model->updated_by = Yii::$app->user->id;         
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
