@@ -4,7 +4,7 @@ namespace app\models;
 
 use Yii;
 
-class Occurrence extends \yii\db\ActiveRecord
+class Department extends \yii\db\ActiveRecord
 {
     public static function tableName()
     {
@@ -53,7 +53,7 @@ class Occurrence extends \yii\db\ActiveRecord
         if ($this->employee === null) {
             return null;
         }
-        return self::$Static_Employee[$this->employee];
+        return self::$Static_employee[$this->employee];
     }      
 
     public static $Static_status = [
@@ -68,16 +68,18 @@ class Occurrence extends \yii\db\ActiveRecord
             return null;
         }
         return self::$Static_status[$this->status];
-    }    
+    }     
 
     public function rules()
     {
         return [
             [['protocol', 'type', 'returntype', 'subject', 'message', 'status', 'created'], 'required'],
-            [['protocol', 'type', 'returntype', 'employee', 'status', 'updated_by'], 'integer'],
-            [['message','answer', 'reporter_name', 'reporter_email', 'reporter_phone', 'reporter_celphone'], 'string'],
+            [['type', 'returntype', 'employee', 'status', 'updated_by'], 'integer'],
+            [['message', 'answer'], 'string'],
             [['created', 'updated'], 'safe'],
-            [['subject'], 'string', 'max' => 50],
+            [['protocol'], 'string', 'max' => 100],
+            [['subject', 'reporter_phone', 'reporter_celphone'], 'string', 'max' => 50],
+            [['reporter_name', 'reporter_email'], 'string', 'max' => 200],
         ];
     }
 
@@ -101,5 +103,5 @@ class Occurrence extends \yii\db\ActiveRecord
             'reporter_phone' => 'Telefone',
             'reporter_celphone' => 'Celular',
         ];
-    }  
+    }
 }

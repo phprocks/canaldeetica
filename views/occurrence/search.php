@@ -28,7 +28,7 @@ $this->title = 'Pesquisar Mensagem';
             return [
                 'id' => $model['id'], 
                 'onclick' => 'location.href="'
-                    . Yii::$app->urlManager->createUrl('occurrence/view') 
+                    . Yii::$app->urlManager->createUrl('occurrence/protocol') 
                     . '&id="+(this.id);',
                 'style' => "cursor: pointer",
             ];

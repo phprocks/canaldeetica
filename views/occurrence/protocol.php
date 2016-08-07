@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 
-$this->title = "";
+$this->title = "Protocolo: ".$model->protocol;
 ?>
 <div class="occurrence-view">
 
@@ -22,7 +22,33 @@ $this->title = "";
 	<?= DetailView::widget([
             'model' => $model,
             'attributes' => [           
+                [ 
+                    'attribute' => 'type',  
+                    'format' => 'raw',
+                    'value' => $model->Type,
+                ],
+                [ 
+                    'attribute' => 'returntype',  
+                    'format' => 'raw',
+                    'value' => $model->Returntype,
+                ],            
                 'subject',
+                'message:ntext',
+                [ 
+                    'attribute' => 'created',
+                    'format' => 'raw',
+                    'value' => date("d/m/Y",  strtotime($model->created))
+                ], 
+                [ 
+                    'attribute' => 'status',  
+                    'format' => 'raw',
+                    'value' => $model->Status,
+                ],  
+                [ 
+                    'attribute' => 'answer',  
+                    'format' => 'html',
+                    'value' => $model->answer,
+                ],                                
             ],
         ]) ?>    
 

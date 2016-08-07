@@ -41,7 +41,7 @@ AppAsset::register($this);
             //['label' => 'About', 'url' => ['/site/about']],
             //['label' => 'Contact', 'url' => ['/site/contact']],
             //['label' => 'User', 'url' => ['/user']],
-            ['label' => 'Ocorrências', 'url' => ['/occurrence'],'visible' => Yii::$app->user->can("admin")],
+            ['label' => 'Ocorrências', 'url' => ['/department'],'visible' => Yii::$app->user->can("admin")],
             Yii::$app->user->isGuest ?
                 ['label' => '<span class="glyphicon glyphicon-lock" aria-hidden="true"></span> Restrito', 'url' => ['/user/login']] : // or ['/user/login-email']
                 ['label' => 'Sair (' . Yii::$app->user->displayName . ')',

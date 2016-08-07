@@ -79,9 +79,11 @@ class OccurrenceController extends Controller
         ]);
     }
 
-    public function actionProtocol($protocol)
+    public function actionProtocol($id)
     {
-        return $this->render('protocol');
+        return $this->render('protocol', [
+            'model' => $this->findModel($id),
+        ]);
     }    
 
     public function actionCreate()
@@ -93,8 +95,8 @@ class OccurrenceController extends Controller
         $model->protocol = date('Y').mt_rand(1500, 8500);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            Yii::$app->session->setFlash('protocol-success', 'Mensagem gravada com sucesso!</br>Anote o numero do protocolo para consultar o andamento da ocorrencia: #'.$model->protocol);
-            return $this->redirect(['protocol', 'protocol' => $model->protocol]);
+            Yii::$app->session->setFlash('protocol-success', 'Mensagem gravada com sucesso!</br>Anote o numero do protocolo para consultar o andamento da ocorrencia: <strong>'.$model->protocol.'</strong>');
+            return $this->redirect(['protocol', 'id' => $model->id]);
         } else {
             return $this->render('create', [
                 'model' => $model,

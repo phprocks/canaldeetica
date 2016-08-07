@@ -29,9 +29,6 @@ $this->title = 'Autenticação';
     <div class="form-group">
         <div class="col-lg-offset-2 col-lg-10">
             <?= Html::submitButton('Enviar', ['class' => 'btn btn-success']) ?>
-
-            <br/><br/>
-            Caso não possua, <?= Html::a("clique aqui para criar", ["/user/register"]) ?>
         </div>
     </div>
 
