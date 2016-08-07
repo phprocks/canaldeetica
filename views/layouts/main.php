@@ -41,10 +41,10 @@ AppAsset::register($this);
             //['label' => 'About', 'url' => ['/site/about']],
             //['label' => 'Contact', 'url' => ['/site/contact']],
             //['label' => 'User', 'url' => ['/user']],
-            ['label' => 'Ocorrências', 'url' => ['/department'],'visible' => Yii::$app->user->can("admin")],
+            ['label' => '<span class="glyphicon glyphicon-book" aria-hidden="true"></span> Ocorrências', 'url' => ['/department'],'visible' => Yii::$app->user->can("admin")],
             Yii::$app->user->isGuest ?
                 ['label' => '<span class="glyphicon glyphicon-lock" aria-hidden="true"></span> Restrito', 'url' => ['/user/login']] : // or ['/user/login-email']
-                ['label' => 'Sair (' . Yii::$app->user->displayName . ')',
+                ['label' => '<span class="glyphicon glyphicon-user" aria-hidden="true"></span> Sair (' . Yii::$app->user->displayName . ')',
                     'url' => ['/user/logout'],
                     'linkOptions' => ['data-method' => 'post']],
         ],

@@ -23,7 +23,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'returntype') ?>
 
-    <?= $form->field($model, 'is_employee') ?>
+    <?= $form->field($model, 'employee') ?>
 
     <?php // echo $form->field($model, 'subject') ?>
 

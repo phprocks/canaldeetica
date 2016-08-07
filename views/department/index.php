@@ -9,7 +9,8 @@ $this->title = 'Ocorrências';
 <div class="occurrence-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-    <?php //echo $this->render('_search', ['model' => $searchModel]); ?>
+    <hr/>
+    <?php echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
         <?php //Html::a('Create Occurrence', ['create'], ['class' => 'btn btn-success']) ?>
@@ -45,7 +46,7 @@ $this->title = 'Ocorrências';
                   return $data->getReturntype();
               },
               'filter' => Occurrence::$Static_returntype,
-              'contentOptions'=>['style'=>'width: 10%;text-align:center'],
+              'contentOptions'=>['style'=>'width: 15%;text-align:center'],
             ],             
             'subject',
             [
@@ -59,7 +60,7 @@ $this->title = 'Ocorrências';
             ], 
             [
             'class' => 'yii\grid\ActionColumn',
-            'contentOptions'=>['style'=>'width: 10%;text-align:right'],
+            'contentOptions'=>['style'=>'width: 8%;text-align:right'],
             ],
         ],
     ]); ?>
