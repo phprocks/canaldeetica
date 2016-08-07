@@ -30,7 +30,7 @@ use app\models\Occurrence;
 	  <?= $form->field($model, 'returntype')->dropDownList(Occurrence::$Static_returntype,['prompt'=>'--']) ?>
 	  </div>
 	  <div class="col-md-4">
-	  <?= $form->field($model, 'is_employee')->dropDownList(Occurrence::$Static_employee,['prompt'=>'--']) ?>
+	  <?= $form->field($model, 'employee')->dropDownList(Occurrence::$Static_employee,['prompt'=>'--']) ?>
 	  </div>
 	</div>
 
@@ -56,9 +56,9 @@ use app\models\Occurrence;
 
 	    <?= $form->field($model, 'reporter_email')->textInput(['maxlength' => true]) ?>
 
-	    <?= $form->field($model, 'reporter_phone')->textInput(['maxlength' => true]) ?>
+      <?= $form->field($model, 'reporter_phone')->widget(\yii\widgets\MaskedInput::classname(), ['mask' => ['(99)99999-9999'],]) ?>
 
-	    <?= $form->field($model, 'reporter_celphone')->textInput(['maxlength' => true]) ?>
+      <?= $form->field($model, 'reporter_celphone')->widget(\yii\widgets\MaskedInput::classname(), ['mask' => ['(99)99999-9999'],]) ?>
       </div>
     </div>
   </div>

@@ -61,10 +61,26 @@ $this->title = "Mensagem - Protocolo #" . $model->protocol;
         <?= DetailView::widget([
             'model' => $model,
             'attributes' => [
-                'reporter_name',
-                'reporter_email',
-                'reporter_phone',
-                'reporter_celphone',
+                [ 
+                    'attribute' => 'reporter_name',
+                    'format' => 'raw',
+                    'value' => $model->reporter_name <> '' ? $model->reporter_name : '<span class="not-set">(não informado)</span>',
+                ],                 
+                [ 
+                    'attribute' => 'reporter_email',
+                    'format' => 'raw',
+                    'value' => $model->reporter_email <> '' ? $model->reporter_email : '<span class="not-set">(não informado)</span>',
+                ],                  
+                [ 
+                    'attribute' => 'reporter_phone',
+                    'format' => 'raw',
+                    'value' => $model->reporter_phone <> '' ? $model->reporter_phone : '<span class="not-set">(não informado)</span>',
+                ],                  
+                [ 
+                    'attribute' => 'reporter_celphone',
+                    'format' => 'raw',
+                    'value' => $model->reporter_celphone <> '' ? $model->reporter_celphone : '<span class="not-set">(não informado)</span>',
+                ],                  
             ],
         ]) ?>  
       </div>
