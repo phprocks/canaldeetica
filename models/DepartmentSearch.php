@@ -9,12 +9,14 @@ use app\models\Department;
 
 class DepartmentSearch extends Department
 {
+    public $start_date;
+    public $end_date;
 
     public function rules()
     {
         return [
             [['id', 'type', 'returntype', 'employee', 'status', 'updated_by'], 'integer'],
-            [['protocol', 'subject', 'message', 'created', 'updated', 'answer', 'reporter_name', 'reporter_email', 'reporter_phone', 'reporter_celphone'], 'safe'],
+            [['start_date', 'end_date','protocol', 'subject', 'message', 'created', 'updated', 'answer', 'reporter_name', 'reporter_email', 'reporter_phone', 'reporter_celphone'], 'safe'],
         ];
     }
 
@@ -32,6 +34,14 @@ class DepartmentSearch extends Department
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort' => [
+                'defaultOrder' => [
+                    'id' => SORT_DESC, 
+                ]
+            ],
+            'pagination' => [
+                'pageSize' => 50,
+            ],
         ]);
 
         $this->load($params);
@@ -53,6 +63,8 @@ class DepartmentSearch extends Department
             'updated' => $this->updated,
             'updated_by' => $this->updated_by,
         ]);
+
+        $query->andFilterWhere(['between', 'created', $this->start_date, $this->end_date]);
 
         $query->andFilterWhere(['like', 'protocol', $this->protocol])
             ->andFilterWhere(['like', 'subject', $this->subject])

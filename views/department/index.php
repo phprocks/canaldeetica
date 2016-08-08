@@ -10,11 +10,14 @@ $this->title = 'Ocorrências';
 
     <h1><?= Html::encode($this->title) ?></h1>
     <hr/>
-    <?php echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <p>
-        <?php //Html::a('Create Occurrence', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+    <div class="panel panel-default">
+      <div class="panel-heading">Opções de Filtros</div>
+      <div class="panel-body">
+        <?php echo $this->render('_search', ['model' => $searchModel]); ?>
+      </div>
+    </div>    
+    
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,

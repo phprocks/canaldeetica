@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 07-Ago-2016 às 22:32
+-- Generation Time: 08-Ago-2016 às 02:49
 -- Versão do servidor: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -64,7 +64,7 @@ CREATE TABLE IF NOT EXISTS `occurrence` (
   `reporter_phone` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `reporter_celphone` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Ocorrencias' AUTO_INCREMENT=23 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Ocorrencias' AUTO_INCREMENT=24 ;
 
 --
 -- Extraindo dados da tabela `occurrence`
@@ -73,7 +73,8 @@ CREATE TABLE IF NOT EXISTS `occurrence` (
 INSERT INTO `occurrence` (`id`, `protocol`, `type`, `returntype`, `employee`, `subject`, `message`, `status`, `created`, `updated`, `updated_by`, `answer`, `reporter_name`, `reporter_email`, `reporter_phone`, `reporter_celphone`) VALUES
 (20, '20168050', 0, 0, 0, 'Teste 1', 'Teste 1Teste 1Teste 1Teste 1Teste 1Teste 1Teste 1Teste 1Teste 1\r\nTeste 1Teste 1Teste 1Teste 1Teste 1Teste 1Teste 1Teste 1Teste 1Teste 1Teste 1Teste 1Teste 1Teste 1Teste 1Teste 1Teste 1Teste 1\r\nTeste 1Teste 1Teste 1Teste 1Teste 1Teste 1Teste 1Teste 1Teste 1Teste 1Teste 1Teste 1Teste 1Teste 1Teste 1Teste 1Teste 1Teste 1\r\nTeste 1Teste 1Teste 1Teste 1Teste 1Teste 1Teste 1Teste 1Teste 1Teste 1Teste 1Teste 1Teste 1Teste 1Teste 1Teste 1Teste 1Teste 1\r\nTeste 1Teste 1Teste 1Teste 1Teste 1Teste 1Teste 1Teste 1Teste 1', 0, '2016-08-07', NULL, NULL, NULL, '', '', '', ''),
 (21, '20165015', 2, 1, 2, 'Teste 2 Teste 2 Teste 2 Teste 2 ', 'Teste 2 Teste 2 Teste 2 Teste 2 Teste 2 Teste 2 Teste 2 Teste 2 Teste 2 Teste 2 \r\nTeste 2 Teste 2 Teste 2 Teste 2 Teste 2 Teste 2 Teste 2 Teste 2 Teste 2 Teste 2 \r\nTeste 2 Teste 2 Teste 2 Teste 2 Teste 2 Teste 2 Teste 2 Teste 2 Teste 2 Teste 2 \r\nTeste 2 Teste 2 Teste 2 Teste 2 Teste 2 \r\nTeste 2 Teste 2 Teste 2 Teste 2 Teste 2 Teste 2 Teste 2 Teste 2 Teste 2 Teste 2 ', 0, '2016-08-07', NULL, NULL, NULL, 'Fulano de tal', 'emailfulanodetal@gmail.com', '33331231234575', '123156497897'),
-(22, '20164849', 4, 0, 3, 'Teste 3 - reclamacao', 'Teste 3 - reclamacaoTeste 3 - reclamacaoTeste 3 - reclamacaoTeste 3 - reclamacaoTeste 3 - reclamacaoTeste 3 - reclamacao\r\nTeste 3 - reclamacaoTeste 3 - reclamacaoTeste 3 - reclamacaoTeste 3 - reclamacaoTeste 3 - reclamacaoTeste 3 - reclamacao\r\nTeste 3 - reclamacaoTeste 3 - reclamacaoTeste 3 - reclamacaoTeste 3 - reclamacaoTeste 3 - reclamacaoTeste 3 - reclamacao\r\nTeste 3 - reclamacaoTeste 3 - reclamacaoTeste 3 - reclamacaoTeste 3 - reclamacaoTeste 3 - reclamacaoTeste 3 - reclamacao', 2, '2016-08-07', '2016-08-07', 1, 'fim!', 'Fulano de tal 3', 'emailfulanodetal3@gmail.com', '(33)65656-5698', '(33)65457-8978');
+(22, '20164849', 4, 0, 3, 'Teste 3 - reclamacao', 'Teste 3 - reclamacaoTeste 3 - reclamacaoTeste 3 - reclamacaoTeste 3 - reclamacaoTeste 3 - reclamacaoTeste 3 - reclamacao\r\nTeste 3 - reclamacaoTeste 3 - reclamacaoTeste 3 - reclamacaoTeste 3 - reclamacaoTeste 3 - reclamacaoTeste 3 - reclamacao\r\nTeste 3 - reclamacaoTeste 3 - reclamacaoTeste 3 - reclamacaoTeste 3 - reclamacaoTeste 3 - reclamacaoTeste 3 - reclamacao\r\nTeste 3 - reclamacaoTeste 3 - reclamacaoTeste 3 - reclamacaoTeste 3 - reclamacaoTeste 3 - reclamacaoTeste 3 - reclamacao', 2, '2016-08-07', '2016-08-07', 1, 'fim!', 'Fulano de tal 3', 'emailfulanodetal3@gmail.com', '(33)65656-5698', '(33)65457-8978'),
+(23, '20166978', 3, 0, 0, 'Teste 4 - Outro test', 'Teste 4 - Outro testTeste 4 - Outro testTeste 4 - Outro testTeste 4 - Outro testTeste 4 - Outro testTeste 4 - Outro test\r\nTeste 4 - Outro testTeste 4 - Outro testTeste 4 - Outro testTeste 4 - Outro test\r\nTeste 4 - Outro testTeste 4 - Outro testTeste 4 - Outro test\r\nTeste 4 - Outro testTeste 4 - Outro test\r\nTeste 4 - Outro test', 0, '2016-08-08', NULL, NULL, NULL, 'Teste 4 - Outro test', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -97,7 +98,7 @@ CREATE TABLE IF NOT EXISTS `profile` (
 --
 
 INSERT INTO `profile` (`id`, `user_id`, `created_at`, `updated_at`, `full_name`, `timezone`) VALUES
-(1, 1, '2016-07-30 21:36:12', NULL, 'the one', NULL);
+(1, 1, '2016-07-30 21:36:12', '2016-08-08 02:51:04', 'Admin', 'Pacific/Midway');
 
 -- --------------------------------------------------------
 
@@ -155,7 +156,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`id`, `role_id`, `status`, `email`, `username`, `password`, `auth_key`, `access_token`, `logged_in_ip`, `logged_in_at`, `created_ip`, `created_at`, `updated_at`, `banned_at`, `banned_reason`) VALUES
-(1, 1, 1, 'neo@neo.com', 'neo', '$2y$13$dyVw4WkZGkABf2UrGWrhHO4ZmVBv.K4puhOL59Y9jQhIdj63TlV.O', '2lnf9ba3SSsJTKSKxiwW1-tJ5LN2Dlf0', '6VCiXXzdwcBwH05bgc-F81F_JPUv8sJM', '::1', '2016-08-07 22:16:33', NULL, '2016-07-30 21:36:12', NULL, NULL, NULL);
+(1, 1, 1, 'admin@admin.com', 'admin', '$2y$13$hayhZMLs8rUoYy8g15ClYOS4PclAWciY13b8HdpcFtDhjnJzZ34iG', '2lnf9ba3SSsJTKSKxiwW1-tJ5LN2Dlf0', '6VCiXXzdwcBwH05bgc-F81F_JPUv8sJM', '127.0.0.1', '2016-08-08 02:51:39', NULL, '2016-07-30 21:36:12', '2016-08-08 02:51:26', NULL, NULL);
 
 -- --------------------------------------------------------
 
