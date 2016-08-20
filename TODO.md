@@ -1,11 +1,6 @@
 TODO
 --------------
 
-nome
-email
-telefone
-cel
-
 REFERENCE
 --------------
 https://www.canalconfidencial.com.br/cielo/#home

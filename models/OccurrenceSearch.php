@@ -48,6 +48,7 @@ class OccurrenceSearch extends Occurrence
             'protocol' => $this->protocol,
             'type' => $this->type,
             'returntype' => $this->returntype,
+            'location' => $this->location,
             'status' => $this->status,
             'created' => $this->created,
             'updated' => $this->updated,

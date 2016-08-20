@@ -37,10 +37,9 @@ AppAsset::register($this);
         'options' => ['class' => 'navbar-nav navbar-right'],
         'encodeLabels' => false,
         'items' => [
-            //['label' => 'Início', 'url' => ['/site/index']],
-            //['label' => 'About', 'url' => ['/site/about']],
+            ['label' => '<span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span> Termo de Participação', 'url' => ['/site/about']],
             //['label' => 'Contact', 'url' => ['/site/contact']],
-            //['label' => 'User', 'url' => ['/user']],
+
             ['label' => '<span class="glyphicon glyphicon-book" aria-hidden="true"></span> Ocorrências', 'url' => ['/department'],'visible' => Yii::$app->user->can("admin")],
             Yii::$app->user->isGuest ?
                 ['label' => '<span class="glyphicon glyphicon-lock" aria-hidden="true"></span> Restrito', 'url' => ['/user/login']] : // or ['/user/login-email']

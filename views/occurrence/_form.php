@@ -30,7 +30,7 @@ use app\models\Occurrence;
 	  <?= $form->field($model, 'returntype')->dropDownList(Occurrence::$Static_returntype,['prompt'=>'--']) ?>
 	  </div>
 	  <div class="col-md-4">
-	  <?= $form->field($model, 'employee')->dropDownList(Occurrence::$Static_employee,['prompt'=>'--']) ?>
+	  <?= $form->field($model, 'location')->dropDownList(Occurrence::$Static_location,['prompt'=>'--']) ?>
 	  </div>
 	</div>
 

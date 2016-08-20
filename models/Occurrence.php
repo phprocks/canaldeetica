@@ -41,19 +41,19 @@ class Occurrence extends \yii\db\ActiveRecord
         return self::$Static_returntype[$this->returntype];
     } 
 
-    public static $Static_employee = [
-        'NÃO INFORMAR',
-        'SIM',
-        'NÃO',
-        'NÃO, SOU CLIENTE',
+    public static $Static_location = [
+        'Local1',
+        'Local1',
+        'Local1',
+        'Local1',
     ];  
 
-    public function getEmployee()
+    public function getLocation()
     {
-        if ($this->employee === null) {
+        if ($this->location === null) {
             return null;
         }
-        return self::$Static_Employee[$this->employee];
+        return self::$Static_Location[$this->location];
     }      
 
     public static $Static_status = [
@@ -74,7 +74,7 @@ class Occurrence extends \yii\db\ActiveRecord
     {
         return [
             [['protocol', 'type', 'returntype', 'subject', 'message', 'status', 'created'], 'required'],
-            [['protocol', 'type', 'returntype', 'employee', 'status', 'updated_by'], 'integer'],
+            [['protocol', 'type', 'returntype', 'location', 'status', 'updated_by'], 'integer'],
             [['message','answer', 'reporter_name', 'reporter_email', 'reporter_phone', 'reporter_celphone'], 'string'],
             [['created', 'updated'], 'safe'],
             [['subject'], 'string', 'max' => 50],
@@ -88,7 +88,7 @@ class Occurrence extends \yii\db\ActiveRecord
             'protocol' => 'Protocolo',
             'type' => 'Tipo da Mensagem',
             'returntype' => 'Retorno por',
-            'employee' => 'É funcionário?',
+            'location' => 'Local',
             'subject' => 'Assunto',
             'message' => 'Mensagem',
             'status' => 'Situação',
