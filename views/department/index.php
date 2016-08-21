@@ -18,6 +18,8 @@ $this->title = 'Ocorrências';
       </div>
     </div>    
     
+    <div class="panel panel-default">
+    <div class="panel-body">    
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -40,9 +42,9 @@ $this->title = 'Ocorrências';
                   return $data->getSubject(); // OR use magic property $data->requestedMounthValue;
               },
               'filter' => Occurrence::$Static_subject,
-              'contentOptions'=>['style'=>'width: 10%;text-align:center'],
+              'contentOptions'=>['style'=>'width: 20%;text-align:center'],
             ],                         
-            'subject',
+            'message',
             [
               'attribute' => 'status',
               'enableSorting' => true,
@@ -58,4 +60,6 @@ $this->title = 'Ocorrências';
             ],
         ],
     ]); ?>
+    </div>
+    </div>
 </div>

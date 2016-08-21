@@ -12,12 +12,12 @@ use app\models\Occurrence;
 
     <div class="row">
       <div class="col-md-6"><?= $form->field($model, 'protocol')->textInput(['maxlength' => true,'readonly' => true, 'disabled' => true]) ?></div>
-      <div class="col-md-6"><?= $form->field($model, 'type')->dropDownList(Occurrence::$Static_type, ['readonly' => true, 'disabled' => true]) ?></div>
+      <div class="col-md-6"><?= $form->field($model, 'created')->textInput(['maxlength' => true,'readonly' => true, 'disabled' => true]) ?></div>
     </div>    
 
     <div class="row">
-      <div class="col-md-6"><?= $form->field($model, 'subject')->textInput(['maxlength' => true,'readonly' => true, 'disabled' => true]) ?></div>
-      <div class="col-md-6"><?= $form->field($model, 'returntype')->dropDownList(Occurrence::$Static_returntype,['readonly' => true, 'disabled' => true]) ?></div>
+      <div class="col-md-6"><?= $form->field($model, 'subject')->dropDownList(Occurrence::$Static_subject,['readonly' => true, 'disabled' => true]) ?></div>    
+      <div class="col-md-6"><?= $form->field($model, 'location')->dropDownList(Occurrence::$Static_location, ['readonly' => true, 'disabled' => true]) ?></div>
     </div>  
 
     <?= $form->field($model, 'message')->textarea(['rows' => 6,'readonly' => true, 'disabled' => true]) ?>

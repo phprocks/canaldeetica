@@ -62,8 +62,8 @@ class Department extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['protocol', 'returntype', 'subject', 'message', 'status', 'created'], 'required'],
-            [['subject', 'employee', 'status', 'updated_by'], 'integer'],
+            [['protocol', 'subject', 'message', 'status', 'created'], 'required'],
+            [['subject', 'status', 'updated_by'], 'integer'],
             [['message', 'answer'], 'string'],
             [['created', 'updated'], 'safe'],
             [['protocol'], 'string', 'max' => 100],
@@ -77,7 +77,6 @@ class Department extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'protocol' => 'Protocolo',
-            'employee' => 'É funcionário?',
             'subject' => 'Assunto',
             'message' => 'Mensagem',
             'status' => 'Situação',
@@ -91,4 +90,10 @@ class Department extends \yii\db\ActiveRecord
             'reporter_celphone' => 'Celular',
         ];
     }
+
+    public function getUser()
+    {
+        $user = Yii::$app->getModule("user")->model("User");
+        return $this->hasOne($user::className(), ['id' => 'updated_by']);
+    }    
 }

@@ -2,9 +2,26 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use yii\data\SqlDataProvider;
+use yii\grid\GridView;
+use amnah\yii2\user\models\User;
 
 
 $this->title = "Mensagem - Protocolo #" . $model->protocol;
+?>
+<?php
+    $t = $model->protocol;
+    $dataProvider = new SqlDataProvider([
+        'sql' => "SELECT a.id, a.name as arquivo, occurrence_id
+        FROM attachment a
+        WHERE a.occurrence_id =  $t",
+        'totalCount' => 200,
+        'sort' =>false,
+        'key'  => 'id',
+        'pagination' => [
+            'pageSize' => 200,
+        ],
+    ]);
 ?>
 <div class="occurrence-view">
 
@@ -21,6 +38,9 @@ $this->title = "Mensagem - Protocolo #" . $model->protocol;
         ]) ?>
     </p>
 
+    <div class="row">
+      <div class="col-md-8">
+
     <div class="panel panel-default">
       <div class="panel-heading"><h5>Detalhes da Mensagem </h5></div>
       <div class="panel-body">
@@ -31,28 +51,53 @@ $this->title = "Mensagem - Protocolo #" . $model->protocol;
                     'attribute' => 'created',
                     'format' => 'raw',
                     'value' => date("d/m/Y",  strtotime($model->created))
-                ],              
+                ],  
                 [ 
-                    'attribute' => 'type',  
+                    'attribute' => 'location',  
                     'format' => 'raw',
-                    'value' => $model->Type,
-                ],
+                    'value' => $model->Location,
+                ],                             
                 [ 
-                    'attribute' => 'returntype',  
+                    'attribute' => 'subject',  
                     'format' => 'raw',
-                    'value' => $model->Returntype,
-                ],      
-                [ 
-                    'attribute' => 'employee',  
-                    'format' => 'raw',
-                    'value' => $model->Employee,
-                ],                         
+                    'value' => $model->Subject,
+                ],                        
                 'subject',
                 'message:ntext',
             ],
         ]) ?>
       </div>
+    </div> 
+
+      </div>
+      <div class="col-md-4">
+
+      <div class="panel panel-default">
+      <div class="panel-heading"><h5>Anexos </h5></div>
+      <div class="panel-body">
+            <?= GridView::widget([
+            'dataProvider' => $dataProvider,
+            'emptyText'    => '</br><p class="text-danger">Nenhum arquivo anexado!</p>',
+            'summary'      =>  '',
+            'showHeader'   => false,
+            'columns' => [
+                    [
+                    'attribute'=>'arquivo',
+                    'format' => 'raw',
+                    'value'=>function ($data) {
+                        return Html::a($data["arquivo"], Yii::$app->request->baseUrl."/attachment/".$data["occurrence_id"]."/".$data["arquivo"], ['target' => '_blank']);
+                    },                                     
+                    'contentOptions'=>['style'=>'width: 70%;text-align:left'],
+                    ],
+            ],
+            ]); ?>
+        </div>
+        </div>
+
+      </div>
     </div>    
+
+   
 
     <div class="row container-fluid">
     <div class="panel panel-default">
@@ -99,9 +144,13 @@ $this->title = "Mensagem - Protocolo #" . $model->protocol;
                     'value' => $model->Status,
                 ],            
                 'answer',
-                'updated_by',
                 [ 
-                    'attribute' => 'reporter_celphone',
+                    'attribute' => 'updated_by',  
+                    'format' => 'raw',
+                    'value' => $model->user->username,
+                ],                
+                [ 
+                    'attribute' => 'updated',
                     'format' => 'raw',
                     'value' => $model->updated <> '' ? date("d/m/Y",  strtotime($model->updated)) : '<span class="not-set">(não alterado)</span>',
                 ],                 
