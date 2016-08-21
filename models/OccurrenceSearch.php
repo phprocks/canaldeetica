@@ -12,9 +12,9 @@ class OccurrenceSearch extends Occurrence
     public function rules()
     {
         return [
-            [['id', 'protocol', 'type', 'returntype', 'status', 'updated_by'], 'integer'],
+            [['id', 'protocol', 'subject', 'returntype', 'status', 'updated_by'], 'integer'],
             [['protocol'], 'required'],
-            [['subject', 'message', 'created', 'updated','answer'], 'safe'],
+            [['message', 'created', 'updated','answer'], 'safe'],
         ];
     }
 
@@ -46,7 +46,7 @@ class OccurrenceSearch extends Occurrence
         $query->andFilterWhere([
             'id' => $this->id,
             'protocol' => $this->protocol,
-            'type' => $this->type,
+            'subject' => $this->subject,
             'returntype' => $this->returntype,
             'location' => $this->location,
             'status' => $this->status,
@@ -55,8 +55,7 @@ class OccurrenceSearch extends Occurrence
             'updated_by' => $this->updated_by,
         ]);
 
-        $query->andFilterWhere(['like', 'subject', $this->subject])
-            ->andFilterWhere(['like', 'message', $this->message]);
+        $query->andFilterWhere(['like', 'message', $this->message]);
 
         return $dataProvider;
     }

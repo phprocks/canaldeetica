@@ -28,16 +28,10 @@ $this->title = "Mensagem - Protocolo #" . $model->protocol;
             'model' => $model,
             'attributes' => [
                 [ 
-                    'attribute' => 'type',  
+                    'attribute' => 'subject',  
                     'format' => 'raw',
-                    'value' => $model->Type,
-                ],
-                [ 
-                    'attribute' => 'returntype',  
-                    'format' => 'raw',
-                    'value' => $model->Returntype,
+                    'value' => $model->Subject,
                 ],            
-                'subject',
                 'message:ntext',
                 [ 
                     'attribute' => 'created',

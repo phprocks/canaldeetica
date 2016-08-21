@@ -15,7 +15,7 @@ use app\models\Occurrence;
     <div class="panel-heading" role="tab" id="headingOne">
       <h4 class="panel-title">
         <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          Detalhes da Mensagem
+          Detalhes do incidente
         </a>
       </h4>
     </div>
@@ -23,19 +23,15 @@ use app\models\Occurrence;
       <div class="panel-body">
       <!-- --- -->
 	<div class="row">
-	  <div class="col-md-4">
-	  <?= $form->field($model, 'type')->dropDownList(Occurrence::$Static_type,['prompt'=>'--']) ?>
-	  </div>
-	  <div class="col-md-4">
-	  <?= $form->field($model, 'returntype')->dropDownList(Occurrence::$Static_returntype,['prompt'=>'--']) ?>
-	  </div>
-	  <div class="col-md-4">
+	  <div class="col-md-6">
 	  <?= $form->field($model, 'location')->dropDownList(Occurrence::$Static_location,['prompt'=>'--']) ?>
 	  </div>
 	</div>
-
-    <?= $form->field($model, 'subject')->textInput(['maxlength' => true]) ?>
-
+  <div class="row">
+    <div class="col-md-6">
+    <?= $form->field($model, 'subject')->dropDownList(Occurrence::$Static_subject,['prompt'=>'--']) ?>
+    </div>
+  </div>
     <?= $form->field($model, 'message')->textarea(['rows' => 6]) ?>
 
       <!-- --- -->

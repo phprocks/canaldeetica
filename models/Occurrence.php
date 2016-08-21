@@ -11,41 +11,30 @@ class Occurrence extends \yii\db\ActiveRecord
         return 'occurrence';
     }
 
-    public static $Static_type = [
-        'DÚVIDA',
-        'ELOGIO',
-        'RECLAMAÇÃO',
-        'SUGESTÃO',
-        'OUTROS',
+    public static $Static_subject = [
+        'Conflito de Interesses',
+        'Discriminação ou práticas abusivas (assedio moral ou sexual)',
+        'Fraudes (internas e/ou externas)',
+        'Violação / descumprimentos de normativos internos',
+        'Comercialização de produtos nas dependencias da entidade',
+        'Quebra de sigilo',
+        'Outros',
     ];  
 
-    public function getType()
+    public function getSubject()
     {
-        if ($this->type === null) {
+        if ($this->subject === null) {
             return null;
         }
-        return self::$Static_type[$this->type];
-    }    
-
-    public static $Static_returntype = [
-        'TELEFONE',
-        'CONSULTA SITE',
-        'EMAIL',
-    ];  
-
-    public function getReturntype()
-    {
-        if ($this->returntype === null) {
-            return null;
-        }
-        return self::$Static_returntype[$this->returntype];
-    } 
+        return self::$Static_subject[$this->subject];
+    }
 
     public static $Static_location = [
-        'Local1',
-        'Local1',
-        'Local1',
-        'Local1',
+        'Governador Valadares',
+        'Frei Inocencio',
+        'São Felix de Minas',
+        'Itabirinha',
+        'Outros',
     ];  
 
     public function getLocation()
@@ -73,11 +62,10 @@ class Occurrence extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['protocol', 'type', 'returntype', 'subject', 'message', 'status', 'created'], 'required'],
-            [['protocol', 'type', 'returntype', 'location', 'status', 'updated_by'], 'integer'],
+            [['protocol', 'subject', 'location', 'message', 'status', 'created'], 'required'],
+            [['protocol', 'subject', 'location', 'status', 'updated_by'], 'integer'],
             [['message','answer', 'reporter_name', 'reporter_email', 'reporter_phone', 'reporter_celphone'], 'string'],
             [['created', 'updated'], 'safe'],
-            [['subject'], 'string', 'max' => 50],
         ];
     }
 
@@ -86,8 +74,6 @@ class Occurrence extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'protocol' => 'Protocolo',
-            'type' => 'Tipo da Mensagem',
-            'returntype' => 'Retorno por',
             'location' => 'Local',
             'subject' => 'Assunto',
             'message' => 'Mensagem',
