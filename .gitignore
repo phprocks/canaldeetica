@@ -18,10 +18,6 @@ Thumbs.db
 # composer itself is not needed
 composer.phar
 
-# Mac DS_Store Files
-.DS_Store
-
-# phpunit itself is not needed
-phpunit.phar
-# local phpunit config
-/phpunit.xml
+# attachments and assets
+/web/attachment/*
+/web/assets/*

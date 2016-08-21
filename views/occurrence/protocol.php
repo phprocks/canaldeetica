@@ -84,7 +84,6 @@ $this->title = "Protocolo: ".$model->protocol;
     <div class="panel-heading"><strong>Anexos</strong></div>
     <div class="panel-body" style="height: 250px;max-height: 250;">
 
-    <?php Pjax::begin(['id' => 'pjax-container']) ?>
             <?= GridView::widget([
             'dataProvider' => $dataProvider,
             'emptyText'    => '</br><p class="text-danger">Nenhum arquivo anexado!</p>',
@@ -92,16 +91,16 @@ $this->title = "Protocolo: ".$model->protocol;
             'showHeader'   => false,
             'columns' => [
                     [
-                    'attribute'=>'img',
-                    'format' => 'html',
+                    'attribute'=>'arquivo',
+                    'format' => 'raw',
                     'value'=>function ($data) {
-                        return $data["arquivo"];
+                        return Html::a($data["arquivo"], Yii::$app->request->baseUrl."/attachment/".$data["occurrence_id"]."/".$data["arquivo"], ['target' => '_blank']);
                     },                                     
                     'contentOptions'=>['style'=>'width: 70%;text-align:left'],
                     ],
             ],
             ]); ?>
-            <?php Pjax::end() ?>
+            
     </div>
     </div>
     </div>

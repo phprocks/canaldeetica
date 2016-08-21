@@ -29,8 +29,8 @@ class Attachment extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'occurrence_id' => 'Occurrence ID',
+            'name' => 'Arquivo',
+            'occurrence_id' => 'ID do Incidente',
         ];
     }
 
