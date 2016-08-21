@@ -11,49 +11,38 @@ class Department extends \yii\db\ActiveRecord
         return 'occurrence';
     }
 
-    public static $Static_type = [
-        'DÚVIDA',
-        'ELOGIO',
-        'RECLAMAÇÃO',
-        'SUGESTÃO',
-        'OUTROS',
+    public static $Static_subject = [
+        'Conflito de Interesses',
+        'Discriminação ou práticas abusivas (assedio moral ou sexual)',
+        'Fraudes (internas e/ou externas)',
+        'Violação / descumprimentos de normativos internos',
+        'Comercialização de produtos nas dependencias da entidade',
+        'Quebra de sigilo',
+        'Outros',
     ];  
 
-    public function getType()
+    public function getSubject()
     {
-        if ($this->type === null) {
+        if ($this->subject === null) {
             return null;
         }
-        return self::$Static_type[$this->type];
-    }    
+        return self::$Static_subject[$this->subject];
+    }
 
-    public static $Static_returntype = [
-        'TELEFONE',
-        'CONSULTA SITE',
-        'EMAIL',
+    public static $Static_location = [
+        'Governador Valadares',
+        'Frei Inocencio',
+        'São Felix de Minas',
+        'Itabirinha',
+        'Outros',
     ];  
 
-    public function getReturntype()
+    public function getLocation()
     {
-        if ($this->returntype === null) {
+        if ($this->location === null) {
             return null;
         }
-        return self::$Static_returntype[$this->returntype];
-    } 
-
-    public static $Static_employee = [
-        'NÃO INFORMAR',
-        'SIM',
-        'NÃO',
-        'NÃO, SOU CLIENTE',
-    ];  
-
-    public function getEmployee()
-    {
-        if ($this->employee === null) {
-            return null;
-        }
-        return self::$Static_employee[$this->employee];
+        return self::$Static_location[$this->location];
     }      
 
     public static $Static_status = [
@@ -68,17 +57,17 @@ class Department extends \yii\db\ActiveRecord
             return null;
         }
         return self::$Static_status[$this->status];
-    }     
+    }    
 
     public function rules()
     {
         return [
-            [['protocol', 'type', 'returntype', 'subject', 'message', 'status', 'created'], 'required'],
-            [['type', 'returntype', 'employee', 'status', 'updated_by'], 'integer'],
+            [['protocol', 'returntype', 'subject', 'message', 'status', 'created'], 'required'],
+            [['subject', 'employee', 'status', 'updated_by'], 'integer'],
             [['message', 'answer'], 'string'],
             [['created', 'updated'], 'safe'],
             [['protocol'], 'string', 'max' => 100],
-            [['subject', 'reporter_phone', 'reporter_celphone'], 'string', 'max' => 50],
+            [['reporter_phone', 'reporter_celphone'], 'string', 'max' => 50],
             [['reporter_name', 'reporter_email'], 'string', 'max' => 200],
         ];
     }
@@ -88,8 +77,6 @@ class Department extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'protocol' => 'Protocolo',
-            'type' => 'Tipo da Mensagem',
-            'returntype' => 'Retorno por',
             'employee' => 'É funcionário?',
             'subject' => 'Assunto',
             'message' => 'Mensagem',

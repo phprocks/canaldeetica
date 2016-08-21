@@ -15,8 +15,8 @@ class DepartmentSearch extends Department
     public function rules()
     {
         return [
-            [['id', 'type', 'returntype', 'employee', 'status', 'updated_by'], 'integer'],
-            [['start_date', 'end_date','protocol', 'subject', 'message', 'created', 'updated', 'answer', 'reporter_name', 'reporter_email', 'reporter_phone', 'reporter_celphone'], 'safe'],
+            [['id', 'subject', 'status', 'updated_by'], 'integer'],
+            [['start_date', 'end_date','protocol', 'message', 'created', 'updated', 'answer', 'reporter_name', 'reporter_email', 'reporter_phone', 'reporter_celphone'], 'safe'],
         ];
     }
 
@@ -55,9 +55,7 @@ class DepartmentSearch extends Department
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'type' => $this->type,
-            'returntype' => $this->returntype,
-            'employee' => $this->employee,
+            'subject' => $this->subject,
             'status' => $this->status,
             'created' => $this->created,
             'updated' => $this->updated,
@@ -67,7 +65,6 @@ class DepartmentSearch extends Department
         $query->andFilterWhere(['between', 'created', $this->start_date, $this->end_date]);
 
         $query->andFilterWhere(['like', 'protocol', $this->protocol])
-            ->andFilterWhere(['like', 'subject', $this->subject])
             ->andFilterWhere(['like', 'message', $this->message])
             ->andFilterWhere(['like', 'answer', $this->answer])
             ->andFilterWhere(['like', 'reporter_name', $this->reporter_name])

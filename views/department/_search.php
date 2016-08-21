@@ -42,7 +42,7 @@ use app\models\Occurrence;
         </div> 
 
         <div class="col-md-4">
-            <?= $form->field($model, 'employee')->dropDownList(Occurrence::$Static_employee,['prompt'=>'--']) ?>
+        
         </div>
 
         <div class="col-md-4">

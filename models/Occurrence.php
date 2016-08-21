@@ -42,7 +42,7 @@ class Occurrence extends \yii\db\ActiveRecord
         if ($this->location === null) {
             return null;
         }
-        return self::$Static_Location[$this->location];
+        return self::$Static_location[$this->location];
     }      
 
     public static $Static_status = [

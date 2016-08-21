@@ -18,20 +18,12 @@ Incluir campo "anexo" (no maximo 5 anexos)
 
 ----
 
-User os textos "Relatar Incidente" e "Acompanhar Incidente" === ok
+Usar os textos "Relatar Incidente" e "Acompanhar Incidente" === ok
 
 -----
 
-Excluir campo "tipo" e adicionar os itens abaixo no campo "Assunto"
-
-Conflito de Interesses
-Discriminação ou práticas abusivas (assedio moral ou sexual)
-Fraudes (internas e/ou externas)
-Violação / descumprimentos de normativos internos
-Comercialização de produtos nas dependencias da entidade
-Quebra de sigilo
-Outros
+Excluir campo "tipo" e adicionar os itens abaixo no campo "Assunto" === ok
 
 ---
 
-Retirar o campo "Retorno por"
+Retirar o campo "Retorno por" === ok

@@ -34,23 +34,14 @@ $this->title = 'Ocorrências';
               'format' => ['date', 'php:d/m/Y'],
             ],             
             [
-              'attribute' => 'type',
+              'attribute' => 'subject',
               'enableSorting' => true,
               'value' => function($data) {
-                  return $data->getType(); // OR use magic property $data->requestedMounthValue;
+                  return $data->getSubject(); // OR use magic property $data->requestedMounthValue;
               },
-              'filter' => Occurrence::$Static_type,
+              'filter' => Occurrence::$Static_subject,
               'contentOptions'=>['style'=>'width: 10%;text-align:center'],
-            ],             
-            [
-              'attribute' => 'returntype',
-              'enableSorting' => true,
-              'value' => function($data) {
-                  return $data->getReturntype();
-              },
-              'filter' => Occurrence::$Static_returntype,
-              'contentOptions'=>['style'=>'width: 15%;text-align:center'],
-            ],             
+            ],                         
             'subject',
             [
               'attribute' => 'status',
