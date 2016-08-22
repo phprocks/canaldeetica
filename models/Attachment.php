@@ -21,7 +21,7 @@ class Attachment extends \yii\db\ActiveRecord
             [['name', 'occurrence_id'], 'required'],
             [['occurrence_id'], 'integer'],
             [['name'], 'string', 'max' => 100],
-            [['file'], 'file', 'extensions'=>'jpg, png', 'maxSize' => 1024 * 1024 * 4],
+            [['file'], 'file', 'extensions'=>'jpg, png, jpeg, doc, docx, pdf, xls, xlsx', 'maxSize' => 1024 * 1024 * 4],
         ];
     }
 
@@ -30,6 +30,7 @@ class Attachment extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'name' => 'Arquivo',
+            'file' => 'Arquivo',
             'occurrence_id' => 'ID do Incidente',
         ];
     }

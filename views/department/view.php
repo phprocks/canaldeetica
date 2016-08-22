@@ -10,7 +10,7 @@ use amnah\yii2\user\models\User;
 $this->title = "Mensagem - Protocolo #" . $model->protocol;
 ?>
 <?php
-    $t = $model->protocol;
+    $t = $model->id;
     $dataProvider = new SqlDataProvider([
         'sql' => "SELECT a.id, a.name as arquivo, occurrence_id
         FROM attachment a
@@ -42,7 +42,7 @@ $this->title = "Mensagem - Protocolo #" . $model->protocol;
       <div class="col-md-8">
 
     <div class="panel panel-default">
-      <div class="panel-heading"><h5>Detalhes da Mensagem </h5></div>
+      <div class="panel-heading"><h4>Detalhes da Mensagem </h4></div>
       <div class="panel-body">
         <?= DetailView::widget([
             'model' => $model,
@@ -62,7 +62,6 @@ $this->title = "Mensagem - Protocolo #" . $model->protocol;
                     'format' => 'raw',
                     'value' => $model->Subject,
                 ],                        
-                'subject',
                 'message:ntext',
             ],
         ]) ?>
@@ -73,7 +72,7 @@ $this->title = "Mensagem - Protocolo #" . $model->protocol;
       <div class="col-md-4">
 
       <div class="panel panel-default">
-      <div class="panel-heading"><h5>Anexos </h5></div>
+      <div class="panel-heading"><h4>Anexos </h4></div>
       <div class="panel-body">
             <?= GridView::widget([
             'dataProvider' => $dataProvider,
@@ -101,7 +100,7 @@ $this->title = "Mensagem - Protocolo #" . $model->protocol;
 
     <div class="row container-fluid">
     <div class="panel panel-default">
-      <div class="panel-heading"><h5>Identificação</h5></div>
+      <div class="panel-heading"><h4>Identificação</h4></div>
       <div class="panel-body">
         <?= DetailView::widget([
             'model' => $model,
@@ -144,11 +143,11 @@ $this->title = "Mensagem - Protocolo #" . $model->protocol;
                     'value' => $model->Status,
                 ],            
                 'answer',
-                [ 
-                    'attribute' => 'updated_by',  
-                    'format' => 'raw',
-                    'value' => $model->user->username,
-                ],                
+                // [ 
+                //     'attribute' => 'updated_by',  
+                //     'format' => 'raw',
+                //     'value' => $model->user->username,
+                // ],                
                 [ 
                     'attribute' => 'updated',
                     'format' => 'raw',

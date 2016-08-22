@@ -38,20 +38,11 @@ $this->title = "Protocolo: ".$model->protocol;
         </div>
     <?php endforeach ?>
 
-    <?php 
-    if ($dataProvider->count < Yii::$app->params['imglimit']) {
-    echo Html::a('<span class="glyphicon glyphicon-paperclip" aria-hidden="true"></span> Incluir Anexos', ['/attachment/create', 'id' => $model->id], ['class' => 'btn btn-success']);
-    } else {
-        echo "";
-    }
-    ?>
-
-
 <div class="row">
 
     <div class="col-md-8">
     <div class="panel panel-default">
-    <div class="panel-heading"><strong>Detalhes do Registro</strong></div>
+    <div class="panel-heading"><h4>Detalhes do Registro</h4></div>
     <div class="panel-body" style="height: 250px;max-height: 250;">
 
     <?= DetailView::widget([
@@ -81,7 +72,17 @@ $this->title = "Protocolo: ".$model->protocol;
   
     <div class="col-md-4">
     <div class="panel panel-default">
-    <div class="panel-heading"><strong>Anexos</strong></div>
+    <div class="panel-heading clearfix"><h4>Documentos
+        
+            <?php 
+            if ($dataProvider->count < Yii::$app->params['imglimit']) {
+            echo Html::a('<span class="glyphicon glyphicon-paperclip" aria-hidden="true"></span> Anexar', ['/attachment/create', 'id' => $model->id], ['class' => 'btn btn-success pull-right']);
+            } else {
+                echo "";
+            }
+            ?>
+        </h4>
+    </div>
     <div class="panel-body" style="height: 250px;max-height: 250;">
 
             <?= GridView::widget([
@@ -110,7 +111,7 @@ $this->title = "Protocolo: ".$model->protocol;
     
     <div class="col-md-12">
     <div class="panel panel-default">
-    <div class="panel-heading"><strong>Resposta / Tratamento do Registro de Incidente</strong></div>
+    <div class="panel-heading"><h4>Resposta / Tratamento do Registro de Incidente</h4></div>
     <div class="panel-body">
 
     <?= DetailView::widget([

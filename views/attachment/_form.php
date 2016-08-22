@@ -45,4 +45,13 @@ $t = Yii::$app->getRequest()->getQueryParam('id');
 	}
 	 ?>
 
+    <hr/>
+    </p>
+    <ul>
+      <li>Você pode adicionar até <strong><?php echo Yii::$app->params['imglimit'];?></strong> arquivos (Você ja adicionou <?php echo $dataProvider->count;?>)</li>
+      <li>As extensões de arquivos permitidas são: <strong>jpg, png, jpeg, doc, docx, pdf, xls, xlsx</strong></li>
+      <li>O tamanho máximo permitido é <strong>4 MB</strong></li>
+      <li>O nome do arquivo será codificado ao realizar o upload</li>
+    </ul>     
+
 </div>
