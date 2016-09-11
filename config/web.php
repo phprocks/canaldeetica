@@ -40,6 +40,17 @@ $config = [
                 'charset' => 'UTF-8',
             ]
         ],
+        // 'mailer' => [
+        //         'class' => 'yii\swiftmailer\Mailer',
+        //         'transport' => [
+        //         'class' => 'Swift_SmtpTransport',
+        //         'host' => 'mail.lol.co.tz',
+        //         'username' => 'info@lol.co.tz',
+        //         'password' => 'lolpasswd',
+        //         'port' => '25', 
+        //         'encryption' => 'tls', //depends if you need it
+        //         ],
+        // ],         
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [

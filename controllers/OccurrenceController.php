@@ -97,6 +97,13 @@ class OccurrenceController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             Yii::$app->session->setFlash('protocol-success', 'Mensagem gravada com sucesso!</br>Anote o numero do protocolo para consultar o andamento da ocorrencia: <strong>'.$model->protocol.'</strong>');
             return $this->redirect(['protocol', 'id' => $model->id]);
+            Yii::$app->mailer->compose()
+                ->setFrom('gugoan@hotmail.com')
+                ->setTo('gugoan@hotmail.com')
+                ->setSubject('Message subject')
+                ->setTextBody('Plain text content')
+                ->setHtmlBody('<b>HTML content</b>')
+                ->send();            
         } else {
             return $this->render('create', [
                 'model' => $model,
