@@ -30,9 +30,13 @@ $config = [
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
-            'useFileTransport' => true,
+            'viewPath' => '@common/mail',
+            'useFileTransport' => false,
+            'transport' => [
+                    'class' => 'Swift_MailTransport',
+                ],
             'messageConfig' => [
-                'from' => ['admin@website.com' => 'Admin'], // this is needed for sending emails
+                'from' => ['admin@website.com' => Yii::$app->params['appName']],
                 'charset' => 'UTF-8',
             ]
         ],
