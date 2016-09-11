@@ -61,16 +61,16 @@ class OccurrenceController extends Controller
     //     ]);
     // }        
 
-    public function actionIndex()
-    {
-        $searchModel = new OccurrenceSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+    // public function actionIndex()
+    // {
+    //     $searchModel = new OccurrenceSearch();
+    //     $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
-    }   
+    //     return $this->render('search', [
+    //         'searchModel' => $searchModel,
+    //         'dataProvider' => $dataProvider,
+    //     ]);
+    // }   
 
     public function actionView($id)
     {

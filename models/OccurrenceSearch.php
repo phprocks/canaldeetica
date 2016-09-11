@@ -12,7 +12,7 @@ class OccurrenceSearch extends Occurrence
     public function rules()
     {
         return [
-            [['id', 'protocol', 'subject', 'returntype', 'status', 'updated_by'], 'integer'],
+            [['id', 'protocol', 'subject', 'status', 'updated_by'], 'integer'],
             [['protocol'], 'required'],
             [['message', 'created', 'updated','answer'], 'safe'],
         ];
@@ -47,7 +47,6 @@ class OccurrenceSearch extends Occurrence
             'id' => $this->id,
             'protocol' => $this->protocol,
             'subject' => $this->subject,
-            'returntype' => $this->returntype,
             'location' => $this->location,
             'status' => $this->status,
             'created' => $this->created,
