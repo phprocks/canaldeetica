@@ -24,23 +24,23 @@ class Occurrence extends \yii\db\ActiveRecord
     }
 
     public static $Static_location = [
-        'Capitão Andrade',
-        'Divino das Laranjeiras',
-        'Divinolandia de Minas',
-        'Fernandes Tourinho',
-        'Frei Inocencio',
         'Governador Valadares',
+        'São Felix de Minas',
+        'Frei Inocencio',
         'Itabirinha',
         'Jampruca',
-        'Mantena',
-        'Marilac',
-        'Outros',
         'Pescador',
+        'Marilac',
+        'Mantena',
+        'Fernandes Tourinho',
         'Santa Efigênia',
+        'Divinolandia de Minas',
         'Sardoá',
-        'São Felix de Minas',
-        'Vargem Grande',
+        'Divino das Laranjeiras',
+        'Capitão Andrade',
         'Virginopolis',
+        'Vargem Grande',
+        'Outros',
     ];  
 
     public function getLocation()

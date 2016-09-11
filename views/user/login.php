@@ -8,10 +8,9 @@ $this->title = 'Autenticação';
 <div class="user-default-login">
 
     <h1><?= Html::encode($this->title) ?></h1>
+    <hr/>
 
-
-    Informe seus dados de acesso
-    <br/>
+    <p class="text-justify">Informe seus dados de acesso</p>
 
     <?php $form = ActiveForm::begin([
         'id' => 'login-form',

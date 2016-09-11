@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use app\models\Occurrence;
 
-$this->title = 'Pesquisar Mensagem';
+$this->title = 'Pesquisar Ocorrência';
 ?>
 <div class="occurrence-index">
 
@@ -35,7 +35,15 @@ $this->title = 'Pesquisar Mensagem';
         },                
         'columns' => [
             'protocol',
-            'subject',
+            [
+              'attribute' => 'subject',
+              'enableSorting' => true,
+              'value' => function($data) {
+                  return $data->getSubject(); // OR use magic property $data->requestedMounthValue;
+              },
+              'filter' => Occurrence::$Static_subject,
+              'contentOptions'=>['style'=>'width: 50%;text-align:left'],
+            ],    
         ],
     ]); ?>
 </div>

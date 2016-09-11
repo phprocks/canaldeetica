@@ -12,13 +12,7 @@ class Department extends \yii\db\ActiveRecord
     }
 
     public static $Static_subject = [
-        'Conflito de Interesses',
-        'Discriminação ou práticas abusivas (assedio moral ou sexual)',
-        'Fraudes (internas e/ou externas)',
-        'Violação / descumprimentos de normativos internos',
-        'Comercialização de produtos nas dependencias da entidade',
-        'Quebra de sigilo',
-        'Outros',
+        'Denúncias', 'Reclamações', 'Elogios', 'Sugestões', 'Outros'
     ];  
 
     public function getSubject()
@@ -31,9 +25,21 @@ class Department extends \yii\db\ActiveRecord
 
     public static $Static_location = [
         'Governador Valadares',
-        'Frei Inocencio',
         'São Felix de Minas',
+        'Frei Inocencio',
         'Itabirinha',
+        'Jampruca',
+        'Pescador',
+        'Marilac',
+        'Mantena',
+        'Fernandes Tourinho',
+        'Santa Efigênia',
+        'Divinolandia de Minas',
+        'Sardoá',
+        'Divino das Laranjeiras',
+        'Capitão Andrade',
+        'Virginopolis',
+        'Vargem Grande',
         'Outros',
     ];  
 
@@ -77,7 +83,7 @@ class Department extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'protocol' => 'Protocolo',
-            'subject' => 'Assunto',
+            'subject' => 'Tipo',
             'message' => 'Mensagem',
             'status' => 'Situação',
             'created' => 'Data',
