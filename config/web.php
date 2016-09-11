@@ -28,29 +28,29 @@ $config = [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        'mailer' => [
-            'class' => 'yii\swiftmailer\Mailer',
-            'viewPath' => '@common/mail',
-            'useFileTransport' => false,
-            'transport' => [
-                    'class' => 'Swift_MailTransport',
-                ],
-            'messageConfig' => [
-                'from' => ['admin@website.com' => Yii::$app->params['appName']],
-                'charset' => 'UTF-8',
-            ]
-        ],
         // 'mailer' => [
-        //         'class' => 'yii\swiftmailer\Mailer',
-        //         'transport' => [
-        //         'class' => 'Swift_SmtpTransport',
-        //         'host' => 'mail.lol.co.tz',
-        //         'username' => 'info@lol.co.tz',
-        //         'password' => 'lolpasswd',
-        //         'port' => '25', 
-        //         'encryption' => 'tls', //depends if you need it
+        //     'class' => 'yii\swiftmailer\Mailer',
+        //     'viewPath' => '@common/mail',
+        //     'useFileTransport' => false,
+        //     'transport' => [
+        //             'class' => 'Swift_MailTransport',
         //         ],
-        // ],         
+        //     'messageConfig' => [
+        //         'from' => ['admin@website.com' => Yii::$app->params['appName']],
+        //         'charset' => 'UTF-8',
+        //     ]
+        // ],
+        'mailer' => [
+                'class' => 'yii\swiftmailer\Mailer',
+                'transport' => [
+                    'class' => 'Swift_SmtpTransport',
+                    'host' => 'smtp.gmail.com',
+                    'username' => 'gugoan@gmail.com',
+                    'password' => 'Metal1984',
+                    'port' => '587',
+                    'encryption' => 'tls',
+                ],
+            ],       
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
