@@ -12,13 +12,7 @@ class Occurrence extends \yii\db\ActiveRecord
     }
 
     public static $Static_subject = [
-        'Conflito de Interesses',
-        'Discriminação ou práticas abusivas (assedio moral ou sexual)',
-        'Fraudes (internas e/ou externas)',
-        'Violação / descumprimentos de normativos internos',
-        'Comercialização de produtos nas dependencias da entidade',
-        'Quebra de sigilo',
-        'Outros',
+        'Denúncias', 'Reclamações', 'Elogios', 'Sugestões', 'Outros'
     ];  
 
     public function getSubject()
@@ -30,11 +24,23 @@ class Occurrence extends \yii\db\ActiveRecord
     }
 
     public static $Static_location = [
-        'Governador Valadares',
+        'Capitão Andrade',
+        'Divino das Laranjeiras',
+        'Divinolandia de Minas',
+        'Fernandes Tourinho',
         'Frei Inocencio',
-        'São Felix de Minas',
+        'Governador Valadares',
         'Itabirinha',
+        'Jampruca',
+        'Mantena',
+        'Marilac',
         'Outros',
+        'Pescador',
+        'Santa Efigênia',
+        'Sardoá',
+        'São Felix de Minas',
+        'Vargem Grande',
+        'Virginopolis',
     ];  
 
     public function getLocation()
@@ -75,7 +81,7 @@ class Occurrence extends \yii\db\ActiveRecord
             'id' => 'ID',
             'protocol' => 'Protocolo',
             'location' => 'Local',
-            'subject' => 'Assunto',
+            'subject' => 'Tipo',
             'message' => 'Mensagem',
             'status' => 'Situação',
             'created' => 'Data',

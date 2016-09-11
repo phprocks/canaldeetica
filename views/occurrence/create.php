@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 
-$this->title = 'Registro de Incidente';
+$this->title = 'Registro de Ocorrência';
 ?>
 <div class="occurrence-create">
 

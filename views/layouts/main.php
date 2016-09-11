@@ -27,7 +27,7 @@ AppAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => 'Canal de Ética',
+        'brandLabel' => Yii::$app->params['appName'],
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
@@ -37,9 +37,7 @@ AppAsset::register($this);
         'options' => ['class' => 'navbar-nav navbar-right'],
         'encodeLabels' => false,
         'items' => [
-            ['label' => '<span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span> Termo de Participação', 'url' => ['/site/about']],
-            //['label' => 'Contact', 'url' => ['/site/contact']],
-
+            //['label' => '<span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span> Termo de Participação', 'url' => ['/site/about']],
             ['label' => '<span class="glyphicon glyphicon-book" aria-hidden="true"></span> Ocorrências', 'url' => ['/department'],'visible' => Yii::$app->user->can("admin")],
             Yii::$app->user->isGuest ?
                 ['label' => '<span class="glyphicon glyphicon-lock" aria-hidden="true"></span> Restrito', 'url' => ['/user/login']] : // or ['/user/login-email']
@@ -61,7 +59,7 @@ AppAsset::register($this);
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">Canal de Ética &copy; Sicoob Crediriodoce <?= date('Y') ?></p>
+        <p class="pull-left"><?=Yii::$app->params['appName'] ?> &copy; Sicoob Crediriodoce <?= date('Y') ?></p>
     </div>
 </footer>
 
