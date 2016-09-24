@@ -41,9 +41,16 @@ AppAsset::register($this);
             ['label' => '<span class="glyphicon glyphicon-book" aria-hidden="true"></span> Ocorrências', 'url' => ['/department'],'visible' => Yii::$app->user->can("admin")],
             Yii::$app->user->isGuest ?
                 ['label' => '<span class="glyphicon glyphicon-lock" aria-hidden="true"></span> Restrito', 'url' => ['/user/login']] : // or ['/user/login-email']
-                ['label' => '<span class="glyphicon glyphicon-user" aria-hidden="true"></span> Sair (' . Yii::$app->user->displayName . ')',
-                    'url' => ['/user/logout'],
-                    'linkOptions' => ['data-method' => 'post']],
+                    ['label' => '<span class="glyphicon glyphicon-user" aria-hidden="true"></span> '. Yii::$app->user->displayName,
+                    'items' => 
+                        [
+                            ['label' => '<span class="glyphicon glyphicon-lock" aria-hidden="true"></span> Minha Conta', 'url' => ['/user/account']],
+                            '<li class="divider"></li>',
+                            ['label' => '<span class="glyphicon glyphicon-off" aria-hidden="true"></span> '.Yii::t('app', 'Sign Out'),
+                                'url' => ['/user/logout'],
+                                'linkOptions' => ['data-method' => 'post']],
+                        ],
+                    ],
         ],
     ]);
     NavBar::end();

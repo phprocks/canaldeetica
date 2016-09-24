@@ -3,22 +3,14 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
-/**
- * @var yii\web\View $this
- * @var yii\widgets\ActiveForm $form
- * @var amnah\yii2\user\Module $module
- * @var amnah\yii2\user\models\User $user
- * @var amnah\yii2\user\models\UserToken $userToken
- */
-
 $module = $this->context->module;
 
-$this->title = Yii::t('user', 'Account');
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Minha Conta';
 ?>
 <div class="user-default-account">
 
     <h1><?= Html::encode($this->title) ?></h1>
+    <hr/>
 
     <?php if ($flash = Yii::$app->session->getFlash("Account-success")): ?>
 
@@ -55,10 +47,6 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php endif ?>
 
     <hr/>
-
-    <?php if ($module->useEmail): ?>
-        <?= $form->field($user, 'email') ?>
-    <?php endif; ?>
 
     <div class="form-group">
         <div class="col-lg-offset-2 col-lg-10">
