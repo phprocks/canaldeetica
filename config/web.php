@@ -78,6 +78,9 @@ $config = [
                 'default' => 'app\controllers\DefaultController',
             ],           
         ],
+       'gridview' =>  [
+            'class' => '\kartik\grid\Module'
+        ]
     ],    
     'params' => $params,
 ];

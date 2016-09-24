@@ -18,6 +18,77 @@ $this->title = 'Ocorrências';
       </div>
     </div>    
     
+    <p>
+    <?php
+    use kartik\export\ExportMenu;
+              $gridColumns = [
+                  ['attribute'=>'protocol', 'hAlign'=>'right', 'width'=>'20px'],
+                  ['attribute'=>'created','format'=>['date'], 'hAlign'=>'right', 'width'=>'110px'],
+                  [
+                  'attribute'=>'subject',
+                  'label'=> 'Situação',
+                  'vAlign'=>'middle',
+                  'width'=>'100px',
+                  'value' => function($data) {
+                      return $data->getSubject();
+                  },
+                  'format'=>'raw'
+                  ],
+                  [
+                  'attribute'=>'location',
+                  'label'=> 'Local',
+                  'vAlign'=>'middle',
+                  'width'=>'100px',
+                  'value' => function($data) {
+                      return $data->getLocation();
+                  },
+                  'format'=>'raw'
+                  ],
+                  ['attribute'=>'message', 'hAlign'=>'right', 'width'=>'100px'],
+                  [
+                  'attribute'=>'status',
+                  'label'=> 'Proposta',
+                  'vAlign'=>'middle',
+                  'width'=>'100px',
+                  'value' => function($data) {
+                      return $data->getStatus();
+                  },
+                  'format'=>'raw'
+                  ],
+                  ['attribute'=>'reporter_name', 'hAlign'=>'right', 'width'=>'100px'], 
+                  ['attribute'=>'reporter_email', 'hAlign'=>'right', 'width'=>'100px'],
+                  ['attribute'=>'reporter_phone', 'hAlign'=>'right', 'width'=>'100px'],
+                  ['attribute'=>'reporter_celphone', 'hAlign'=>'right', 'width'=>'100px'],
+                  ['attribute'=>'answer', 'hAlign'=>'right', 'width'=>'100px'],
+              ];
+              echo ExportMenu::widget([
+              'dataProvider' => $dataProvider,
+              'columns' => $gridColumns,
+              'fontAwesome' => true,
+              'emptyText' => 'Nenhum registro',
+              'showColumnSelector' => true,
+              'asDropdown' => true,
+              'target' => ExportMenu::TARGET_BLANK,
+              'showConfirmAlert' => false,
+              'exportConfig' => [
+                ExportMenu::FORMAT_HTML => false,
+                ExportMenu::FORMAT_CSV => false,
+                ExportMenu::FORMAT_TEXT => false,
+                ExportMenu::FORMAT_PDF => false
+            ],
+            'columnSelectorOptions' => [
+              'class' => 'btn btn-success',
+            ],
+            'dropdownOptions' => [
+              'icon' => false,
+              'label' => 'Exportar Registros',
+              'class' => 'btn btn-success',
+            ],
+            'filename' => 'relatorio-ocorrencias-'.date('Y-m-d'),
+            ]);
+    ?> 
+    </p>
+
     <div class="panel panel-default">
     <div class="panel-body">    
     <?= GridView::widget([
