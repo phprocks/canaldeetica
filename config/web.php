@@ -44,11 +44,17 @@ $config = [
                 'class' => 'yii\swiftmailer\Mailer',
                 'transport' => [
                     'class' => 'Swift_SmtpTransport',
-                    'host' => 'smtp.gmail.com',
-                    'username' => 'gugoan@gmail.com',
-                    'password' => 'Metal1984',
+                    'host' => 'smtps.uol.com.br',
+                    'username' => 'gugoan@uol.com.br',
+                    'password' => 'tigusta1',
                     'port' => '587',
                     'encryption' => 'tls',
+                    'streamOptions' => [
+                            'ssl' => [
+                                'verify_peer' => false,
+                                'verify_peer_name' => false,
+                            ],
+                        ],
                 ],
             ],       
         'log' => [
